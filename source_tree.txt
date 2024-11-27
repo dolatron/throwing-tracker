@@ -1,0 +1,1141 @@
+.
+├── README.md
+├── components.json
+├── next-env.d.ts
+├── next.config.ts
+├── node_modules
+│   ├── @alloc
+│   │   └── quick-lru
+│   │       ├── index.d.ts
+│   │       ├── index.js
+│   │       ├── license
+│   │       ├── package.json
+│   │       └── readme.md
+│   ├── @auth
+│   │   └── core
+│   │       ├── LICENSE
+│   │       ├── README.md
+│   │       ├── adapters.d.ts
+│   │       ├── adapters.d.ts.map
+│   │       ├── adapters.js
+│   │       ├── errors.d.ts
+│   │       ├── errors.d.ts.map
+│   │       ├── errors.js
+│   │       ├── index.d.ts
+│   │       ├── index.d.ts.map
+│   │       ├── index.js
+│   │       ├── jwt.d.ts
+│   │       ├── jwt.d.ts.map
+│   │       ├── jwt.js
+│   │       ├── lib
+│   │       │   ├── actions
+│   │       │   │   ├── callback
+│   │       │   │   │   ├── handle-login.d.ts
+│   │       │   │   │   ├── handle-login.d.ts.map
+│   │       │   │   │   ├── handle-login.js
+│   │       │   │   │   ├── index.d.ts
+│   │       │   │   │   ├── index.d.ts.map
+│   │       │   │   │   ├── index.js
+│   │       │   │   │   └── oauth
+│   │       │   │   │       ├── callback.d.ts
+│   │       │   │   │       ├── callback.d.ts.map
+│   │       │   │   │       ├── callback.js
+│   │       │   │   │       ├── checks.d.ts
+│   │       │   │   │       ├── checks.d.ts.map
+│   │       │   │   │       ├── checks.js
+│   │       │   │   │       ├── csrf-token.d.ts
+│   │       │   │   │       ├── csrf-token.d.ts.map
+│   │       │   │   │       └── csrf-token.js
+│   │       │   │   ├── index.d.ts
+│   │       │   │   ├── index.d.ts.map
+│   │       │   │   ├── index.js
+│   │       │   │   ├── session.d.ts
+│   │       │   │   ├── session.d.ts.map
+│   │       │   │   ├── session.js
+│   │       │   │   ├── signin
+│   │       │   │   │   ├── authorization-url.d.ts
+│   │       │   │   │   ├── authorization-url.d.ts.map
+│   │       │   │   │   ├── authorization-url.js
+│   │       │   │   │   ├── index.d.ts
+│   │       │   │   │   ├── index.d.ts.map
+│   │       │   │   │   ├── index.js
+│   │       │   │   │   ├── send-token.d.ts
+│   │       │   │   │   ├── send-token.d.ts.map
+│   │       │   │   │   └── send-token.js
+│   │       │   │   ├── signout.d.ts
+│   │       │   │   ├── signout.d.ts.map
+│   │       │   │   ├── signout.js
+│   │       │   │   ├── webauthn-options.d.ts
+│   │       │   │   ├── webauthn-options.d.ts.map
+│   │       │   │   └── webauthn-options.js
+│   │       │   ├── index.d.ts
+│   │       │   ├── index.d.ts.map
+│   │       │   ├── index.js
+│   │       │   ├── init.d.ts
+│   │       │   ├── init.d.ts.map
+│   │       │   ├── init.js
+│   │       │   ├── pages
+│   │       │   │   ├── error.d.ts
+│   │       │   │   ├── error.d.ts.map
+│   │       │   │   ├── error.js
+│   │       │   │   ├── index.d.ts
+│   │       │   │   ├── index.d.ts.map
+│   │       │   │   ├── index.js
+│   │       │   │   ├── signin.d.ts
+│   │       │   │   ├── signin.d.ts.map
+│   │       │   │   ├── signin.js
+│   │       │   │   ├── signout.d.ts
+│   │       │   │   ├── signout.d.ts.map
+│   │       │   │   ├── signout.js
+│   │       │   │   ├── styles.d.ts
+│   │       │   │   ├── styles.d.ts.map
+│   │       │   │   ├── styles.js
+│   │       │   │   ├── verify-request.d.ts
+│   │       │   │   ├── verify-request.d.ts.map
+│   │       │   │   └── verify-request.js
+│   │       │   └── utils
+│   │       │       ├── actions.d.ts
+│   │       │       ├── actions.d.ts.map
+│   │       │       ├── actions.js
+│   │       │       ├── assert.d.ts
+│   │       │       ├── assert.d.ts.map
+│   │       │       ├── assert.js
+│   │       │       ├── callback-url.d.ts
+│   │       │       ├── callback-url.d.ts.map
+│   │       │       ├── callback-url.js
+│   │       │       ├── cookie.d.ts
+│   │       │       ├── cookie.d.ts.map
+│   │       │       ├── cookie.js
+│   │       │       ├── date.d.ts
+│   │       │       ├── date.d.ts.map
+│   │       │       ├── date.js
+│   │       │       ├── email.d.ts
+│   │       │       ├── email.d.ts.map
+│   │       │       ├── email.js
+│   │       │       ├── env.d.ts
+│   │       │       ├── env.d.ts.map
+│   │       │       ├── env.js
+│   │       │       ├── logger.d.ts
+│   │       │       ├── logger.d.ts.map
+│   │       │       ├── logger.js
+│   │       │       ├── merge.d.ts
+│   │       │       ├── merge.d.ts.map
+│   │       │       ├── merge.js
+│   │       │       ├── providers.d.ts
+│   │       │       ├── providers.d.ts.map
+│   │       │       ├── providers.js
+│   │       │       ├── session.d.ts
+│   │       │       ├── session.d.ts.map
+│   │       │       ├── session.js
+│   │       │       ├── web.d.ts
+│   │       │       ├── web.d.ts.map
+│   │       │       ├── web.js
+│   │       │       ├── webauthn-client.d.ts
+│   │       │       ├── webauthn-client.d.ts.map
+│   │       │       ├── webauthn-client.js
+│   │       │       ├── webauthn-utils.d.ts
+│   │       │       ├── webauthn-utils.d.ts.map
+│   │       │       └── webauthn-utils.js
+│   │       ├── node_modules
+│   │       │   ├── cookie
+│   │       │   │   ├── HISTORY.md
+│   │       │   │   ├── LICENSE
+│   │       │   │   ├── README.md
+│   │       │   │   ├── SECURITY.md
+│   │       │   │   ├── index.js
+│   │       │   │   └── package.json
+│   │       │   ├── preact
+│   │       │   │   ├── LICENSE
+│   │       │   │   ├── README.md
+│   │       │   │   ├── compat
+│   │       │   │   │   ├── client.js
+│   │       │   │   │   ├── client.mjs
+│   │       │   │   │   ├── dist
+│   │       │   │   │   │   ├── compat.js
+│   │       │   │   │   │   ├── compat.js.map
+│   │       │   │   │   │   ├── compat.mjs
+│   │       │   │   │   │   ├── compat.module.js
+│   │       │   │   │   │   ├── compat.module.js.map
+│   │       │   │   │   │   ├── compat.umd.js
+│   │       │   │   │   │   └── compat.umd.js.map
+│   │       │   │   │   ├── jsx-dev-runtime.js
+│   │       │   │   │   ├── jsx-dev-runtime.mjs
+│   │       │   │   │   ├── jsx-runtime.js
+│   │       │   │   │   ├── jsx-runtime.mjs
+│   │       │   │   │   ├── package.json
+│   │       │   │   │   ├── scheduler.js
+│   │       │   │   │   ├── scheduler.mjs
+│   │       │   │   │   ├── server.browser.js
+│   │       │   │   │   ├── server.js
+│   │       │   │   │   ├── server.mjs
+│   │       │   │   │   ├── src
+│   │       │   │   │   │   ├── Children.js
+│   │       │   │   │   │   ├── PureComponent.js
+│   │       │   │   │   │   ├── forwardRef.js
+│   │       │   │   │   │   ├── index.d.ts
+│   │       │   │   │   │   ├── index.js
+│   │       │   │   │   │   ├── internal.d.ts
+│   │       │   │   │   │   ├── memo.js
+│   │       │   │   │   │   ├── portals.js
+│   │       │   │   │   │   ├── render.js
+│   │       │   │   │   │   ├── suspense-list.d.ts
+│   │       │   │   │   │   ├── suspense-list.js
+│   │       │   │   │   │   ├── suspense.d.ts
+│   │       │   │   │   │   ├── suspense.js
+│   │       │   │   │   │   └── util.js
+│   │       │   │   │   └── test-utils.js
+│   │       │   │   ├── debug
+│   │       │   │   │   ├── dist
+│   │       │   │   │   │   ├── debug.js
+│   │       │   │   │   │   ├── debug.js.map
+│   │       │   │   │   │   ├── debug.mjs
+│   │       │   │   │   │   ├── debug.module.js
+│   │       │   │   │   │   ├── debug.module.js.map
+│   │       │   │   │   │   ├── debug.umd.js
+│   │       │   │   │   │   └── debug.umd.js.map
+│   │       │   │   │   ├── package.json
+│   │       │   │   │   └── src
+│   │       │   │   │       ├── check-props.js
+│   │       │   │   │       ├── component-stack.js
+│   │       │   │   │       ├── constants.js
+│   │       │   │   │       ├── debug.js
+│   │       │   │   │       ├── index.d.ts
+│   │       │   │   │       ├── index.js
+│   │       │   │   │       ├── internal.d.ts
+│   │       │   │   │       └── util.js
+│   │       │   │   ├── devtools
+│   │       │   │   │   ├── dist
+│   │       │   │   │   │   ├── devtools.js
+│   │       │   │   │   │   ├── devtools.js.map
+│   │       │   │   │   │   ├── devtools.mjs
+│   │       │   │   │   │   ├── devtools.module.js
+│   │       │   │   │   │   ├── devtools.module.js.map
+│   │       │   │   │   │   ├── devtools.umd.js
+│   │       │   │   │   │   └── devtools.umd.js.map
+│   │       │   │   │   ├── package.json
+│   │       │   │   │   └── src
+│   │       │   │   │       ├── devtools.js
+│   │       │   │   │       ├── index.d.ts
+│   │       │   │   │       └── index.js
+│   │       │   │   ├── dist
+│   │       │   │   │   ├── preact.js
+│   │       │   │   │   ├── preact.js.map
+│   │       │   │   │   ├── preact.min.js
+│   │       │   │   │   ├── preact.min.js.map
+│   │       │   │   │   ├── preact.min.module.js
+│   │       │   │   │   ├── preact.min.module.js.map
+│   │       │   │   │   ├── preact.min.umd.js
+│   │       │   │   │   ├── preact.min.umd.js.map
+│   │       │   │   │   ├── preact.mjs
+│   │       │   │   │   ├── preact.module.js
+│   │       │   │   │   ├── preact.module.js.map
+│   │       │   │   │   ├── preact.umd.js
+│   │       │   │   │   └── preact.umd.js.map
+│   │       │   │   ├── hooks
+│   │       │   │   │   ├── dist
+│   │       │   │   │   │   ├── hooks.js
+│   │       │   │   │   │   ├── hooks.js.map
+│   │       │   │   │   │   ├── hooks.mjs
+│   │       │   │   │   │   ├── hooks.module.js
+│   │       │   │   │   │   ├── hooks.module.js.map
+│   │       │   │   │   │   ├── hooks.umd.js
+│   │       │   │   │   │   └── hooks.umd.js.map
+│   │       │   │   │   ├── package.json
+│   │       │   │   │   └── src
+│   │       │   │   │       ├── index.d.ts
+│   │       │   │   │       ├── index.js
+│   │       │   │   │       └── internal.d.ts
+│   │       │   │   ├── jsx-runtime
+│   │       │   │   │   ├── dist
+│   │       │   │   │   │   ├── jsxRuntime.js
+│   │       │   │   │   │   ├── jsxRuntime.js.map
+│   │       │   │   │   │   ├── jsxRuntime.mjs
+│   │       │   │   │   │   ├── jsxRuntime.module.js
+│   │       │   │   │   │   ├── jsxRuntime.module.js.map
+│   │       │   │   │   │   ├── jsxRuntime.umd.js
+│   │       │   │   │   │   └── jsxRuntime.umd.js.map
+│   │       │   │   │   ├── package.json
+│   │       │   │   │   └── src
+│   │       │   │   │       ├── index.d.ts
+│   │       │   │   │       └── index.js
+│   │       │   │   ├── package.json
+│   │       │   │   ├── src
+│   │       │   │   │   ├── cjs.js
+│   │       │   │   │   ├── clone-element.js
+│   │       │   │   │   ├── component.js
+│   │       │   │   │   ├── constants.js
+│   │       │   │   │   ├── create-context.js
+│   │       │   │   │   ├── create-element.js
+│   │       │   │   │   ├── diff
+│   │       │   │   │   │   ├── catch-error.js
+│   │       │   │   │   │   ├── children.js
+│   │       │   │   │   │   ├── index.js
+│   │       │   │   │   │   └── props.js
+│   │       │   │   │   ├── index.d.ts
+│   │       │   │   │   ├── index.js
+│   │       │   │   │   ├── internal.d.ts
+│   │       │   │   │   ├── jsx.d.ts
+│   │       │   │   │   ├── options.js
+│   │       │   │   │   ├── render.js
+│   │       │   │   │   └── util.js
+│   │       │   │   └── test-utils
+│   │       │   │       ├── dist
+│   │       │   │       │   ├── testUtils.js
+│   │       │   │       │   ├── testUtils.js.map
+│   │       │   │       │   ├── testUtils.mjs
+│   │       │   │       │   ├── testUtils.module.js
+│   │       │   │       │   ├── testUtils.module.js.map
+│   │       │   │       │   ├── testUtils.umd.js
+│   │       │   │       │   └── testUtils.umd.js.map
+│   │       │   │       ├── package.json
+│   │       │   │       └── src
+│   │       │   │           ├── index.d.ts
+│   │       │   │           └── index.js
+│   │       │   └── preact-render-to-string
+│   │       │       ├── LICENSE
+│   │       │       ├── README.md
+│   │       │       ├── dist
+│   │       │       │   ├── commonjs.js
+│   │       │       │   ├── commonjs.js.map
+│   │       │       │   ├── index.d.ts
+│   │       │       │   ├── index.js
+│   │       │       │   ├── index.js.map
+│   │       │       │   ├── index.mjs
+│   │       │       │   ├── index.module.js
+│   │       │       │   ├── index.module.js.map
+│   │       │       │   ├── jsx-entry.js
+│   │       │       │   ├── jsx-entry.js.map
+│   │       │       │   ├── jsx.d.ts
+│   │       │       │   ├── jsx.js
+│   │       │       │   ├── jsx.js.map
+│   │       │       │   ├── jsx.mjs
+│   │       │       │   ├── jsx.modern.js
+│   │       │       │   ├── jsx.modern.js.map
+│   │       │       │   ├── jsx.module.js
+│   │       │       │   ├── jsx.module.js.map
+│   │       │       │   └── preact-render-to-string-tests.d.ts
+│   │       │       ├── jsx.js
+│   │       │       ├── package.json
+│   │       │       ├── src
+│   │       │       │   ├── constants.js
+│   │       │       │   ├── index.d.ts
+│   │       │       │   ├── index.js
+│   │       │       │   ├── jsx.d.ts
+│   │       │       │   ├── jsx.js
+│   │       │       │   ├── polyfills.js
+│   │       │       │   ├── preact-render-to-string-tests.d.ts
+│   │       │       │   ├── pretty.js
+│   │       │       │   └── util.js
+│   │       │       └── typings.json
+│   │       ├── package.json
+│   │       ├── providers
+│   │       │   ├── 42-school.d.ts
+│   │       │   ├── 42-school.d.ts.map
+│   │       │   ├── 42-school.js
+│   │       │   ├── apple.d.ts
+│   │       │   ├── apple.d.ts.map
+│   │       │   ├── apple.js
+│   │       │   ├── asgardeo.d.ts
+│   │       │   ├── asgardeo.d.ts.map
+│   │       │   ├── asgardeo.js
+│   │       │   ├── auth0.d.ts
+│   │       │   ├── auth0.d.ts.map
+│   │       │   ├── auth0.js
+│   │       │   ├── authentik.d.ts
+│   │       │   ├── authentik.d.ts.map
+│   │       │   ├── authentik.js
+│   │       │   ├── azure-ad-b2c.d.ts
+│   │       │   ├── azure-ad-b2c.d.ts.map
+│   │       │   ├── azure-ad-b2c.js
+│   │       │   ├── azure-ad.d.ts
+│   │       │   ├── azure-ad.d.ts.map
+│   │       │   ├── azure-ad.js
+│   │       │   ├── azure-devops.d.ts
+│   │       │   ├── azure-devops.d.ts.map
+│   │       │   ├── azure-devops.js
+│   │       │   ├── bankid-no.d.ts
+│   │       │   ├── bankid-no.d.ts.map
+│   │       │   ├── bankid-no.js
+│   │       │   ├── battlenet.d.ts
+│   │       │   ├── battlenet.d.ts.map
+│   │       │   ├── battlenet.js
+│   │       │   ├── beyondidentity.d.ts
+│   │       │   ├── beyondidentity.d.ts.map
+│   │       │   ├── beyondidentity.js
+│   │       │   ├── box.d.ts
+│   │       │   ├── box.d.ts.map
+│   │       │   ├── box.js
+│   │       │   ├── boxyhq-saml.d.ts
+│   │       │   ├── boxyhq-saml.d.ts.map
+│   │       │   ├── boxyhq-saml.js
+│   │       │   ├── bungie.d.ts
+│   │       │   ├── bungie.d.ts.map
+│   │       │   ├── bungie.js
+│   │       │   ├── click-up.d.ts
+│   │       │   ├── click-up.d.ts.map
+│   │       │   ├── click-up.js
+│   │       │   ├── cognito.d.ts
+│   │       │   ├── cognito.d.ts.map
+│   │       │   ├── cognito.js
+│   │       │   ├── coinbase.d.ts
+│   │       │   ├── coinbase.d.ts.map
+│   │       │   ├── coinbase.js
+│   │       │   ├── credentials.d.ts
+│   │       │   ├── credentials.d.ts.map
+│   │       │   ├── credentials.js
+│   │       │   ├── descope.d.ts
+│   │       │   ├── descope.d.ts.map
+│   │       │   ├── descope.js
+│   │       │   ├── discord.d.ts
+│   │       │   ├── discord.d.ts.map
+│   │       │   ├── discord.js
+│   │       │   ├── dribbble.d.ts
+│   │       │   ├── dribbble.d.ts.map
+│   │       │   ├── dribbble.js
+│   │       │   ├── dropbox.d.ts
+│   │       │   ├── dropbox.d.ts.map
+│   │       │   ├── dropbox.js
+│   │       │   ├── duende-identity-server6.d.ts
+│   │       │   ├── duende-identity-server6.d.ts.map
+│   │       │   ├── duende-identity-server6.js
+│   │       │   ├── email.d.ts
+│   │       │   ├── email.d.ts.map
+│   │       │   ├── email.js
+│   │       │   ├── eveonline.d.ts
+│   │       │   ├── eveonline.d.ts.map
+│   │       │   ├── eveonline.js
+│   │       │   ├── facebook.d.ts
+│   │       │   ├── facebook.d.ts.map
+│   │       │   ├── facebook.js
+│   │       │   ├── faceit.d.ts
+│   │       │   ├── faceit.d.ts.map
+│   │       │   ├── faceit.js
+│   │       │   ├── foursquare.d.ts
+│   │       │   ├── foursquare.d.ts.map
+│   │       │   ├── foursquare.js
+│   │       │   ├── freshbooks.d.ts
+│   │       │   ├── freshbooks.d.ts.map
+│   │       │   ├── freshbooks.js
+│   │       │   ├── fusionauth.d.ts
+│   │       │   ├── fusionauth.d.ts.map
+│   │       │   ├── fusionauth.js
+│   │       │   ├── github.d.ts
+│   │       │   ├── github.d.ts.map
+│   │       │   ├── github.js
+│   │       │   ├── gitlab.d.ts
+│   │       │   ├── gitlab.d.ts.map
+│   │       │   ├── gitlab.js
+│   │       │   ├── google.d.ts
+│   │       │   ├── google.d.ts.map
+│   │       │   ├── google.js
+│   │       │   ├── hubspot.d.ts
+│   │       │   ├── hubspot.d.ts.map
+│   │       │   ├── hubspot.js
+│   │       │   ├── identity-server4.d.ts
+│   │       │   ├── identity-server4.d.ts.map
+│   │       │   ├── identity-server4.js
+│   │       │   ├── index.d.ts
+│   │       │   ├── index.d.ts.map
+│   │       │   ├── index.js
+│   │       │   ├── instagram.d.ts
+│   │       │   ├── instagram.d.ts.map
+│   │       │   ├── instagram.js
+│   │       │   ├── kakao.d.ts
+│   │       │   ├── kakao.d.ts.map
+│   │       │   ├── kakao.js
+│   │       │   ├── keycloak.d.ts
+│   │       │   ├── keycloak.d.ts.map
+│   │       │   ├── keycloak.js
+│   │       │   ├── line.d.ts
+│   │       │   ├── line.d.ts.map
+│   │       │   ├── line.js
+│   │       │   ├── linkedin.d.ts
+│   │       │   ├── linkedin.d.ts.map
+│   │       │   ├── linkedin.js
+│   │       │   ├── mailchimp.d.ts
+│   │       │   ├── mailchimp.d.ts.map
+│   │       │   ├── mailchimp.js
+│   │       │   ├── mailru.d.ts
+│   │       │   ├── mailru.d.ts.map
+│   │       │   ├── mailru.js
+│   │       │   ├── mastodon.d.ts
+│   │       │   ├── mastodon.d.ts.map
+│   │       │   ├── mastodon.js
+│   │       │   ├── mattermost.d.ts
+│   │       │   ├── mattermost.d.ts.map
+│   │       │   ├── mattermost.js
+│   │       │   ├── medium.d.ts
+│   │       │   ├── medium.d.ts.map
+│   │       │   ├── medium.js
+│   │       │   ├── microsoft-entra-id.d.ts
+│   │       │   ├── microsoft-entra-id.d.ts.map
+│   │       │   ├── microsoft-entra-id.js
+│   │       │   ├── naver.d.ts
+│   │       │   ├── naver.d.ts.map
+│   │       │   ├── naver.js
+│   │       │   ├── netlify.d.ts
+│   │       │   ├── netlify.d.ts.map
+│   │       │   ├── netlify.js
+│   │       │   ├── netsuite.d.ts
+│   │       │   ├── netsuite.d.ts.map
+│   │       │   ├── netsuite.js
+│   │       │   ├── nodemailer.d.ts
+│   │       │   ├── nodemailer.d.ts.map
+│   │       │   ├── nodemailer.js
+│   │       │   ├── notion.d.ts
+│   │       │   ├── notion.d.ts.map
+│   │       │   ├── notion.js
+│   │       │   ├── oauth-types.d.ts
+│   │       │   ├── oauth-types.d.ts.map
+│   │       │   ├── oauth-types.js
+│   │       │   ├── oauth.d.ts
+│   │       │   ├── oauth.d.ts.map
+│   │       │   ├── oauth.js
+│   │       │   ├── okta.d.ts
+│   │       │   ├── okta.d.ts.map
+│   │       │   ├── okta.js
+│   │       │   ├── onelogin.d.ts
+│   │       │   ├── onelogin.d.ts.map
+│   │       │   ├── onelogin.js
+│   │       │   ├── ory-hydra.d.ts
+│   │       │   ├── ory-hydra.d.ts.map
+│   │       │   ├── ory-hydra.js
+│   │       │   ├── osso.d.ts
+│   │       │   ├── osso.d.ts.map
+│   │       │   ├── osso.js
+│   │       │   ├── osu.d.ts
+│   │       │   ├── osu.d.ts.map
+│   │       │   ├── osu.js
+│   │       │   ├── passage.d.ts
+│   │       │   ├── passage.d.ts.map
+│   │       │   ├── passage.js
+│   │       │   ├── passkey.d.ts
+│   │       │   ├── passkey.d.ts.map
+│   │       │   ├── passkey.js
+│   │       │   ├── patreon.d.ts
+│   │       │   ├── patreon.d.ts.map
+│   │       │   ├── patreon.js
+│   │       │   ├── pinterest.d.ts
+│   │       │   ├── pinterest.d.ts.map
+│   │       │   ├── pinterest.js
+│   │       │   ├── pipedrive.d.ts
+│   │       │   ├── pipedrive.d.ts.map
+│   │       │   ├── pipedrive.js
+│   │       │   ├── postmark.d.ts
+│   │       │   ├── postmark.d.ts.map
+│   │       │   ├── postmark.js
+│   │       │   ├── reddit.d.ts
+│   │       │   ├── reddit.d.ts.map
+│   │       │   ├── reddit.js
+│   │       │   ├── resend.d.ts
+│   │       │   ├── resend.d.ts.map
+│   │       │   ├── resend.js
+│   │       │   ├── salesforce.d.ts
+│   │       │   ├── salesforce.d.ts.map
+│   │       │   ├── salesforce.js
+│   │       │   ├── sendgrid.d.ts
+│   │       │   ├── sendgrid.d.ts.map
+│   │       │   ├── sendgrid.js
+│   │       │   ├── simplelogin.d.ts
+│   │       │   ├── simplelogin.d.ts.map
+│   │       │   ├── simplelogin.js
+│   │       │   ├── slack.d.ts
+│   │       │   ├── slack.d.ts.map
+│   │       │   ├── slack.js
+│   │       │   ├── spotify.d.ts
+│   │       │   ├── spotify.d.ts.map
+│   │       │   ├── spotify.js
+│   │       │   ├── strava.d.ts
+│   │       │   ├── strava.d.ts.map
+│   │       │   ├── strava.js
+│   │       │   ├── threads.d.ts
+│   │       │   ├── threads.d.ts.map
+│   │       │   ├── threads.js
+│   │       │   ├── tiktok.d.ts
+│   │       │   ├── tiktok.d.ts.map
+│   │       │   ├── tiktok.js
+│   │       │   ├── todoist.d.ts
+│   │       │   ├── todoist.d.ts.map
+│   │       │   ├── todoist.js
+│   │       │   ├── trakt.d.ts
+│   │       │   ├── trakt.d.ts.map
+│   │       │   ├── trakt.js
+│   │       │   ├── twitch.d.ts
+│   │       │   ├── twitch.d.ts.map
+│   │       │   ├── twitch.js
+│   │       │   ├── twitter.d.ts
+│   │       │   ├── twitter.d.ts.map
+│   │       │   ├── twitter.js
+│   │       │   ├── united-effects.d.ts
+│   │       │   ├── united-effects.d.ts.map
+│   │       │   ├── united-effects.js
+│   │       │   ├── vk.d.ts
+│   │       │   ├── vk.d.ts.map
+│   │       │   ├── vk.js
+│   │       │   ├── webauthn.d.ts
+│   │       │   ├── webauthn.d.ts.map
+│   │       │   ├── webauthn.js
+│   │       │   ├── webex.d.ts
+│   │       │   ├── webex.d.ts.map
+│   │       │   ├── webex.js
+│   │       │   ├── wikimedia.d.ts
+│   │       │   ├── wikimedia.d.ts.map
+│   │       │   ├── wikimedia.js
+│   │       │   ├── wordpress.d.ts
+│   │       │   ├── wordpress.d.ts.map
+│   │       │   ├── wordpress.js
+│   │       │   ├── workos.d.ts
+│   │       │   ├── workos.d.ts.map
+│   │       │   ├── workos.js
+│   │       │   ├── yandex.d.ts
+│   │       │   ├── yandex.d.ts.map
+│   │       │   ├── yandex.js
+│   │       │   ├── zitadel.d.ts
+│   │       │   ├── zitadel.d.ts.map
+│   │       │   ├── zitadel.js
+│   │       │   ├── zoho.d.ts
+│   │       │   ├── zoho.d.ts.map
+│   │       │   ├── zoho.js
+│   │       │   ├── zoom.d.ts
+│   │       │   ├── zoom.d.ts.map
+│   │       │   └── zoom.js
+│   │       ├── src
+│   │       │   ├── adapters.ts
+│   │       │   ├── errors.ts
+│   │       │   ├── index.ts
+│   │       │   ├── jwt.ts
+│   │       │   ├── lib
+│   │       │   │   ├── actions
+│   │       │   │   │   ├── callback
+│   │       │   │   │   │   ├── handle-login.ts
+│   │       │   │   │   │   ├── index.ts
+│   │       │   │   │   │   └── oauth
+│   │       │   │   │   │       ├── callback.ts
+│   │       │   │   │   │       ├── checks.ts
+│   │       │   │   │   │       └── csrf-token.ts
+│   │       │   │   │   ├── index.ts
+│   │       │   │   │   ├── session.ts
+│   │       │   │   │   ├── signin
+│   │       │   │   │   │   ├── authorization-url.ts
+│   │       │   │   │   │   ├── index.ts
+│   │       │   │   │   │   └── send-token.ts
+│   │       │   │   │   ├── signout.ts
+│   │       │   │   │   └── webauthn-options.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── init.ts
+│   │       │   │   ├── pages
+│   │       │   │   │   ├── error.tsx
+│   │       │   │   │   ├── index.ts
+│   │       │   │   │   ├── signin.tsx
+│   │       │   │   │   ├── signout.tsx
+│   │       │   │   │   ├── styles.css
+│   │       │   │   │   ├── styles.ts
+│   │       │   │   │   └── verify-request.tsx
+│   │       │   │   └── utils
+│   │       │   │       ├── actions.ts
+│   │       │   │       ├── assert.ts
+│   │       │   │       ├── callback-url.ts
+│   │       │   │       ├── cookie.ts
+│   │       │   │       ├── date.ts
+│   │       │   │       ├── email.ts
+│   │       │   │       ├── env.ts
+│   │       │   │       ├── logger.ts
+│   │       │   │       ├── merge.ts
+│   │       │   │       ├── providers.ts
+│   │       │   │       ├── session.ts
+│   │       │   │       ├── web.ts
+│   │       │   │       ├── webauthn-client.js
+│   │       │   │       └── webauthn-utils.ts
+│   │       │   ├── providers
+│   │       │   │   ├── 42-school.ts
+│   │       │   │   ├── apple.ts
+│   │       │   │   ├── asgardeo.ts
+│   │       │   │   ├── auth0.ts
+│   │       │   │   ├── authentik.ts
+│   │       │   │   ├── azure-ad-b2c.ts
+│   │       │   │   ├── azure-ad.ts
+│   │       │   │   ├── azure-devops.ts
+│   │       │   │   ├── bankid-no.ts
+│   │       │   │   ├── battlenet.ts
+│   │       │   │   ├── beyondidentity.ts
+│   │       │   │   ├── box.ts
+│   │       │   │   ├── boxyhq-saml.ts
+│   │       │   │   ├── bungie.ts
+│   │       │   │   ├── click-up.ts
+│   │       │   │   ├── cognito.ts
+│   │       │   │   ├── coinbase.ts
+│   │       │   │   ├── credentials.ts
+│   │       │   │   ├── descope.ts
+│   │       │   │   ├── discord.ts
+│   │       │   │   ├── dribbble.ts
+│   │       │   │   ├── dropbox.ts
+│   │       │   │   ├── duende-identity-server6.ts
+│   │       │   │   ├── email.ts
+│   │       │   │   ├── eveonline.ts
+│   │       │   │   ├── facebook.ts
+│   │       │   │   ├── faceit.ts
+│   │       │   │   ├── foursquare.ts
+│   │       │   │   ├── freshbooks.ts
+│   │       │   │   ├── fusionauth.ts
+│   │       │   │   ├── github.ts
+│   │       │   │   ├── gitlab.ts
+│   │       │   │   ├── google.ts
+│   │       │   │   ├── hubspot.ts
+│   │       │   │   ├── identity-server4.ts
+│   │       │   │   ├── index.ts
+│   │       │   │   ├── instagram.ts
+│   │       │   │   ├── kakao.ts
+│   │       │   │   ├── keycloak.ts
+│   │       │   │   ├── line.ts
+│   │       │   │   ├── linkedin.ts
+│   │       │   │   ├── mailchimp.ts
+│   │       │   │   ├── mailru.ts
+│   │       │   │   ├── mastodon.ts
+│   │       │   │   ├── mattermost.ts
+│   │       │   │   ├── medium.ts
+│   │       │   │   ├── microsoft-entra-id.ts
+│   │       │   │   ├── naver.ts
+│   │       │   │   ├── netlify.ts
+│   │       │   │   ├── netsuite.ts
+│   │       │   │   ├── nodemailer.ts
+│   │       │   │   ├── notion.ts
+│   │       │   │   ├── oauth-types.ts
+│   │       │   │   ├── oauth.ts
+│   │       │   │   ├── okta.ts
+│   │       │   │   ├── onelogin.ts
+│   │       │   │   ├── ory-hydra.ts
+│   │       │   │   ├── osso.ts
+│   │       │   │   ├── osu.ts
+│   │       │   │   ├── passage.ts
+│   │       │   │   ├── passkey.ts
+│   │       │   │   ├── patreon.ts
+│   │       │   │   ├── pinterest.ts
+│   │       │   │   ├── pipedrive.ts
+│   │       │   │   ├── postmark.ts
+│   │       │   │   ├── reddit.ts
+│   │       │   │   ├── resend.ts
+│   │       │   │   ├── salesforce.ts
+│   │       │   │   ├── sendgrid.ts
+│   │       │   │   ├── simplelogin.ts
+│   │       │   │   ├── slack.ts
+│   │       │   │   ├── spotify.ts
+│   │       │   │   ├── strava.ts
+│   │       │   │   ├── threads.ts
+│   │       │   │   ├── tiktok.ts
+│   │       │   │   ├── todoist.ts
+│   │       │   │   ├── trakt.ts
+│   │       │   │   ├── twitch.ts
+│   │       │   │   ├── twitter.ts
+│   │       │   │   ├── united-effects.ts
+│   │       │   │   ├── vk.ts
+│   │       │   │   ├── webauthn.ts
+│   │       │   │   ├── webex.ts
+│   │       │   │   ├── wikimedia.ts
+│   │       │   │   ├── wordpress.ts
+│   │       │   │   ├── workos.ts
+│   │       │   │   ├── yandex.ts
+│   │       │   │   ├── zitadel.ts
+│   │       │   │   ├── zoho.ts
+│   │       │   │   └── zoom.ts
+│   │       │   └── types.ts
+│   │       ├── types.d.ts
+│   │       ├── types.d.ts.map
+│   │       └── types.js
+│   ├── @babel
+│   │   └── runtime
+│   │       ├── LICENSE
+│   │       ├── README.md
+│   │       ├── helpers
+│   │       │   ├── AwaitValue.js
+│   │       │   ├── OverloadYield.js
+│   │       │   ├── applyDecoratedDescriptor.js
+│   │       │   ├── applyDecs.js
+│   │       │   ├── applyDecs2203.js
+│   │       │   ├── applyDecs2203R.js
+│   │       │   ├── applyDecs2301.js
+│   │       │   ├── applyDecs2305.js
+│   │       │   ├── applyDecs2311.js
+│   │       │   ├── arrayLikeToArray.js
+│   │       │   ├── arrayWithHoles.js
+│   │       │   ├── arrayWithoutHoles.js
+│   │       │   ├── assertClassBrand.js
+│   │       │   ├── assertThisInitialized.js
+│   │       │   ├── asyncGeneratorDelegate.js
+│   │       │   ├── asyncIterator.js
+│   │       │   ├── asyncToGenerator.js
+│   │       │   ├── awaitAsyncGenerator.js
+│   │       │   ├── callSuper.js
+│   │       │   ├── checkInRHS.js
+│   │       │   ├── checkPrivateRedeclaration.js
+│   │       │   ├── classApplyDescriptorDestructureSet.js
+│   │       │   ├── classApplyDescriptorGet.js
+│   │       │   ├── classApplyDescriptorSet.js
+│   │       │   ├── classCallCheck.js
+│   │       │   ├── classCheckPrivateStaticAccess.js
+│   │       │   ├── classCheckPrivateStaticFieldDescriptor.js
+│   │       │   ├── classExtractFieldDescriptor.js
+│   │       │   ├── classNameTDZError.js
+│   │       │   ├── classPrivateFieldDestructureSet.js
+│   │       │   ├── classPrivateFieldGet.js
+│   │       │   ├── classPrivateFieldGet2.js
+│   │       │   ├── classPrivateFieldInitSpec.js
+│   │       │   ├── classPrivateFieldLooseBase.js
+│   │       │   ├── classPrivateFieldLooseKey.js
+│   │       │   ├── classPrivateFieldSet.js
+│   │       │   ├── classPrivateFieldSet2.js
+│   │       │   ├── classPrivateGetter.js
+│   │       │   ├── classPrivateMethodGet.js
+│   │       │   ├── classPrivateMethodInitSpec.js
+│   │       │   ├── classPrivateMethodSet.js
+│   │       │   ├── classPrivateSetter.js
+│   │       │   ├── classStaticPrivateFieldDestructureSet.js
+│   │       │   ├── classStaticPrivateFieldSpecGet.js
+│   │       │   ├── classStaticPrivateFieldSpecSet.js
+│   │       │   ├── classStaticPrivateMethodGet.js
+│   │       │   ├── classStaticPrivateMethodSet.js
+│   │       │   ├── construct.js
+│   │       │   ├── createClass.js
+│   │       │   ├── createForOfIteratorHelper.js
+│   │       │   ├── createForOfIteratorHelperLoose.js
+│   │       │   ├── createSuper.js
+│   │       │   ├── decorate.js
+│   │       │   ├── defaults.js
+│   │       │   ├── defineAccessor.js
+│   │       │   ├── defineEnumerableProperties.js
+│   │       │   ├── defineProperty.js
+│   │       │   ├── dispose.js
+│   │       │   ├── esm
+│   │       │   │   ├── AwaitValue.js
+│   │       │   │   ├── OverloadYield.js
+│   │       │   │   ├── applyDecoratedDescriptor.js
+│   │       │   │   ├── applyDecs.js
+│   │       │   │   ├── applyDecs2203.js
+│   │       │   │   ├── applyDecs2203R.js
+│   │       │   │   ├── applyDecs2301.js
+│   │       │   │   ├── applyDecs2305.js
+│   │       │   │   ├── applyDecs2311.js
+│   │       │   │   ├── arrayLikeToArray.js
+│   │       │   │   ├── arrayWithHoles.js
+│   │       │   │   ├── arrayWithoutHoles.js
+│   │       │   │   ├── assertClassBrand.js
+│   │       │   │   ├── assertThisInitialized.js
+│   │       │   │   ├── asyncGeneratorDelegate.js
+│   │       │   │   ├── asyncIterator.js
+│   │       │   │   ├── asyncToGenerator.js
+│   │       │   │   ├── awaitAsyncGenerator.js
+│   │       │   │   ├── callSuper.js
+│   │       │   │   ├── checkInRHS.js
+│   │       │   │   ├── checkPrivateRedeclaration.js
+│   │       │   │   ├── classApplyDescriptorDestructureSet.js
+│   │       │   │   ├── classApplyDescriptorGet.js
+│   │       │   │   ├── classApplyDescriptorSet.js
+│   │       │   │   ├── classCallCheck.js
+│   │       │   │   ├── classCheckPrivateStaticAccess.js
+│   │       │   │   ├── classCheckPrivateStaticFieldDescriptor.js
+│   │       │   │   ├── classExtractFieldDescriptor.js
+│   │       │   │   ├── classNameTDZError.js
+│   │       │   │   ├── classPrivateFieldDestructureSet.js
+│   │       │   │   ├── classPrivateFieldGet.js
+│   │       │   │   ├── classPrivateFieldGet2.js
+│   │       │   │   ├── classPrivateFieldInitSpec.js
+│   │       │   │   ├── classPrivateFieldLooseBase.js
+│   │       │   │   ├── classPrivateFieldLooseKey.js
+│   │       │   │   ├── classPrivateFieldSet.js
+│   │       │   │   ├── classPrivateFieldSet2.js
+│   │       │   │   ├── classPrivateGetter.js
+│   │       │   │   ├── classPrivateMethodGet.js
+│   │       │   │   ├── classPrivateMethodInitSpec.js
+│   │       │   │   ├── classPrivateMethodSet.js
+│   │       │   │   ├── classPrivateSetter.js
+│   │       │   │   ├── classStaticPrivateFieldDestructureSet.js
+│   │       │   │   ├── classStaticPrivateFieldSpecGet.js
+│   │       │   │   ├── classStaticPrivateFieldSpecSet.js
+│   │       │   │   ├── classStaticPrivateMethodGet.js
+│   │       │   │   ├── classStaticPrivateMethodSet.js
+│   │       │   │   ├── construct.js
+│   │       │   │   ├── createClass.js
+│   │       │   │   ├── createForOfIteratorHelper.js
+│   │       │   │   ├── createForOfIteratorHelperLoose.js
+│   │       │   │   ├── createSuper.js
+│   │       │   │   ├── decorate.js
+│   │       │   │   ├── defaults.js
+│   │       │   │   ├── defineAccessor.js
+│   │       │   │   ├── defineEnumerableProperties.js
+│   │       │   │   ├── defineProperty.js
+│   │       │   │   ├── dispose.js
+│   │       │   │   ├── extends.js
+│   │       │   │   ├── get.js
+│   │       │   │   ├── getPrototypeOf.js
+│   │       │   │   ├── identity.js
+│   │       │   │   ├── importDeferProxy.js
+│   │       │   │   ├── inherits.js
+│   │       │   │   ├── inheritsLoose.js
+│   │       │   │   ├── initializerDefineProperty.js
+│   │       │   │   ├── initializerWarningHelper.js
+│   │       │   │   ├── instanceof.js
+│   │       │   │   ├── interopRequireDefault.js
+│   │       │   │   ├── interopRequireWildcard.js
+│   │       │   │   ├── isNativeFunction.js
+│   │       │   │   ├── isNativeReflectConstruct.js
+│   │       │   │   ├── iterableToArray.js
+│   │       │   │   ├── iterableToArrayLimit.js
+│   │       │   │   ├── jsx.js
+│   │       │   │   ├── maybeArrayLike.js
+│   │       │   │   ├── newArrowCheck.js
+│   │       │   │   ├── nonIterableRest.js
+│   │       │   │   ├── nonIterableSpread.js
+│   │       │   │   ├── nullishReceiverError.js
+│   │       │   │   ├── objectDestructuringEmpty.js
+│   │       │   │   ├── objectSpread.js
+│   │       │   │   ├── objectSpread2.js
+│   │       │   │   ├── objectWithoutProperties.js
+│   │       │   │   ├── objectWithoutPropertiesLoose.js
+│   │       │   │   ├── package.json
+│   │       │   │   ├── possibleConstructorReturn.js
+│   │       │   │   ├── readOnlyError.js
+│   │       │   │   ├── regeneratorRuntime.js
+│   │       │   │   ├── set.js
+│   │       │   │   ├── setFunctionName.js
+│   │       │   │   ├── setPrototypeOf.js
+│   │       │   │   ├── skipFirstGeneratorNext.js
+│   │       │   │   ├── slicedToArray.js
+│   │       │   │   ├── superPropBase.js
+│   │       │   │   ├── superPropGet.js
+│   │       │   │   ├── superPropSet.js
+│   │       │   │   ├── taggedTemplateLiteral.js
+│   │       │   │   ├── taggedTemplateLiteralLoose.js
+│   │       │   │   ├── tdz.js
+│   │       │   │   ├── temporalRef.js
+│   │       │   │   ├── temporalUndefined.js
+│   │       │   │   ├── toArray.js
+│   │       │   │   ├── toConsumableArray.js
+│   │       │   │   ├── toPrimitive.js
+│   │       │   │   ├── toPropertyKey.js
+│   │       │   │   ├── toSetter.js
+│   │       │   │   ├── typeof.js
+│   │       │   │   ├── unsupportedIterableToArray.js
+│   │       │   │   ├── using.js
+│   │       │   │   ├── usingCtx.js
+│   │       │   │   ├── wrapAsyncGenerator.js
+│   │       │   │   ├── wrapNativeSuper.js
+│   │       │   │   ├── wrapRegExp.js
+│   │       │   │   └── writeOnlyError.js
+│   │       │   ├── extends.js
+│   │       │   ├── get.js
+│   │       │   ├── getPrototypeOf.js
+│   │       │   ├── identity.js
+│   │       │   ├── importDeferProxy.js
+│   │       │   ├── inherits.js
+│   │       │   ├── inheritsLoose.js
+│   │       │   ├── initializerDefineProperty.js
+│   │       │   ├── initializerWarningHelper.js
+│   │       │   ├── instanceof.js
+│   │       │   ├── interopRequireDefault.js
+│   │       │   ├── interopRequireWildcard.js
+│   │       │   ├── isNativeFunction.js
+│   │       │   ├── isNativeReflectConstruct.js
+│   │       │   ├── iterableToArray.js
+│   │       │   ├── iterableToArrayLimit.js
+│   │       │   ├── jsx.js
+│   │       │   ├── maybeArrayLike.js
+│   │       │   ├── newArrowCheck.js
+│   │       │   ├── nonIterableRest.js
+│   │       │   ├── nonIterableSpread.js
+│   │       │   ├── nullishReceiverError.js
+│   │       │   ├── objectDestructuringEmpty.js
+│   │       │   ├── objectSpread.js
+│   │       │   ├── objectSpread2.js
+│   │       │   ├── objectWithoutProperties.js
+│   │       │   ├── objectWithoutPropertiesLoose.js
+│   │       │   ├── possibleConstructorReturn.js
+│   │       │   ├── readOnlyError.js
+│   │       │   ├── regeneratorRuntime.js
+│   │       │   ├── set.js
+│   │       │   ├── setFunctionName.js
+│   │       │   ├── setPrototypeOf.js
+│   │       │   ├── skipFirstGeneratorNext.js
+│   │       │   ├── slicedToArray.js
+│   │       │   ├── superPropBase.js
+│   │       │   ├── superPropGet.js
+│   │       │   ├── superPropSet.js
+│   │       │   ├── taggedTemplateLiteral.js
+│   │       │   ├── taggedTemplateLiteralLoose.js
+│   │       │   ├── tdz.js
+│   │       │   ├── temporalRef.js
+│   │       │   ├── temporalUndefined.js
+│   │       │   ├── toArray.js
+│   │       │   ├── toConsumableArray.js
+│   │       │   ├── toPrimitive.js
+│   │       │   ├── toPropertyKey.js
+│   │       │   ├── toSetter.js
+│   │       │   ├── typeof.js
+│   │       │   ├── unsupportedIterableToArray.js
+│   │       │   ├── using.js
+│   │       │   ├── usingCtx.js
+│   │       │   ├── wrapAsyncGenerator.js
+│   │       │   ├── wrapNativeSuper.js
+│   │       │   ├── wrapRegExp.js
+│   │       │   └── writeOnlyError.js
+│   │       ├── package.json
+│   │       └── regenerator
+│   │           └── index.js
+│   ├── @emnapi
+│   ├── @eslint
+│   │   ├── eslintrc
+│   │   │   ├── LICENSE
+│   │   │   ├── README.md
+│   │   │   ├── conf
+│   │   │   │   ├── config-schema.js
+│   │   │   │   └── environments.js
+│   │   │   ├── dist
+│   │   │   │   ├── eslintrc-universal.cjs
+│   │   │   │   ├── eslintrc-universal.cjs.map
+│   │   │   │   ├── eslintrc.cjs
+│   │   │   │   └── eslintrc.cjs.map
+│   │   │   ├── lib
+│   │   │   │   ├── cascading-config-array-factory.js
+│   │   │   │   ├── config-array
+│   │   │   │   │   ├── config-array.js
+│   │   │   │   │   ├── config-dependency.js
+│   │   │   │   │   ├── extracted-config.js
+│   │   │   │   │   ├── ignore-pattern.js
+│   │   │   │   │   ├── index.js
+│   │   │   │   │   └── override-tester.js
+│   │   │   │   ├── config-array-factory.js
+│   │   │   │   ├── flat-compat.js
+│   │   │   │   ├── index-universal.js
+│   │   │   │   ├── index.js
+│   │   │   │   └── shared
+│   │   │   │       ├── ajv.js
+│   │   │   │       ├── config-ops.js
+│   │   │   │       ├── config-validator.js
+│   │   │   │       ├── deprecation-warnings.js
+│   │   │   │       ├── naming.js
+│   │   │   │       ├── relative-module-resolver.js
+│   │   │   │       └── types.js
+│   │   │   ├── package.json
+│   │   │   └── universal.js
+│   │   └── js
+│   │       ├── LICENSE
+│   │       ├── README.md
+│   │       ├── package.json
+│   │       └── src
+│   │           ├── configs
+│   │           │   ├── eslint-all.js
+│   │           │   └── eslint-recommended.js
+│   │           └── index.js
+│   ├── @eslint-community
+│   │   ├── eslint-utils
+│   │   │   ├── LICENSE
+│   │   │   ├── README.md
+│   │   │   ├── index.js
+│   │   │   ├── index.js.map
+│   │   │   ├── index.mjs
+│   │   │   ├── index.mjs.map
+│   │   │   └── package.json
+│   │   └── regexpp
+│   │       ├── LICENSE
+│   │       ├── README.md
+│   │       ├── index.d.ts
+│   │       ├── index.js
+│   │       ├── index.js.map
+│   │       ├── index.mjs
+│   │       ├── index.mjs.map
+│   │       └── package.json
+│   ├── @humanwhocodes
+│   │   ├── config-array
+│   │   │   ├── LICENSE
+│   │   │   ├── README.md
+│   │   │   ├── api.js
+│   │   │   └── package.json
+│   │   ├── module-importer
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── LICENSE
+│   │   │   ├── README.md
+│   │   │   ├── dist
+│   │   │   │   ├── module-importer.cjs
+│   │   │   │   ├── module-importer.d.cts
+│   │   │   │   ├── module-importer.d.ts
+│   │   │   │   └── module-importer.js
+│   │   │   ├── package.json
+│   │   │   └── src
+│   │   │       ├── module-importer.cjs
+│   │   │       └── module-importer.js
+│   │   └── object-schema
+│   │       ├── CHANGELOG.md
+│   │       ├── LICENSE
+│   │       ├── README.md
+│   │       ├── package.json
+│   │       └── src
+│   │           ├── index.js
+│   │           ├── merge-strategy.js
+│   │           ├── object-schema.js
+│   │           └── validation-strategy.js
+│   ├── @img
+│   │   ├── sharp-darwin-arm64
+│   │   │   ├── LICENSE
+│   │   │   ├── README.md
+│   │   │   ├── lib
+│   │   │   │   └── sharp-darwin-arm64.node
+│   │   │   └── package.json
+│   │   └── sharp-libvips-darwin-arm64
+│   │       ├── README.md
+│   │       ├── lib
+│   │       │   ├── glib-2.0
+│   │       │   │   └── include
+│   │       │   │       └── glibconfig.h
+│   │       │   ├── index.js
+│   │       │   └── libvips-cpp.42.dylib
+│   │       ├── package.json
+│   │       └── versions.json
+│   ├── @isaacs
+│   │   └── cliui
+│   │       ├── LICENSE.txt
+│   │       ├── README.md
+│   │       ├── build
+│   │       │   ├── index.cjs
+│   │       │   ├── index.d.cts
+│   │       │   └── lib
+│   │       │       └── index.js
+│   │       ├── index.mjs
+│   │       ├── node_modules
+│   │       │   ├── ansi-regex
+│   │       │   │   ├── index.d.ts
+│   │       │   │   ├── index.js
+│   │       │   │   ├── license
+│   │       │   │   ├── package.json
+│   │       │   │   └── readme.md
+│   │       │   └── strip-ansi
+│   │       │       ├── index.d.ts
+│   │       │       ├── index.js
+│   │       │       ├── license
+│   │       │       ├── package.json
+│   │       │       └── readme.md
+│   │       └── package.json
+│   ├── @jridgewell
+│   │   ├── gen-mapping
+│   │   │   ├── LICENSE
+│   │   │   ├── README.md
+│   │   │   ├── dist
+│   │   │   │   ├── gen-mapping.mjs
+│   │   │   │   ├── gen-mapping.mjs.map
+│   │   │   │   ├── gen-mapping.umd.js
+│   │   │   │   ├── gen-mapping.umd.js.map
+│   │   │   │   └── types
+│   │   │   │       ├── gen-mapping.d.ts
+│   │   │   │       ├── sourcemap-segment.d.ts
+│   │   │   │       └── types.d.ts
+│   │   │   └── package.json
+│   │   ├── resolve-uri
+│   │   │   ├── LICENSE
+│   │   │   ├── README.md
+│   │   │   ├── dist
+│   │   │   │   ├── resolve-uri.mjs
+│   │   │   │   ├── resolve-uri.mjs.map
+│   │   │   │   ├── resolve-uri.umd.js
+│   │   │   │   ├── resolve-uri.umd.js.map
+│   │   │   │   └── types
+│   │   │   │       └── resolve-uri.d.ts
+│   │   │   └── package.json
+│   │   ├── set-array
+│   │   │   �

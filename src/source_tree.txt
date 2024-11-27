@@ -1,0 +1,104 @@
+.
+├── app
+│   ├── (api)
+│   │   └── auth
+│   │       ├── callback
+│   │       │   └── route.ts
+│   │       ├── logout
+│   │       │   └── route.ts
+│   │       └── onboard
+│   │           └── route.ts
+│   ├── (auth)
+│   │   └── onboard
+│   │       └── page.tsx
+│   ├── (user)
+│   │   └── dashboard
+│   │       ├── layout.tsx
+│   │       └── page.tsx
+│   ├── favicon.ico
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── providers.tsx
+│   └── styles
+│       ├── fonts
+│       │   ├── GeistMonoVF.woff
+│       │   └── GeistVF.woff
+│       └── globals.css
+├── contexts
+│   ├── auth-context.tsx
+│   └── program-context.tsx
+├── hooks
+│   ├── useAuth.ts
+│   ├── useProgram.ts
+│   ├── useProgramDebug.ts
+│   ├── useWorkoutActions.ts
+│   ├── useWorkoutState.ts
+│   └── useWorkoutSync.ts
+├── lib
+│   ├── database.ts
+│   ├── middleware.ts
+│   ├── utils.ts
+│   └── workout.ts
+├── programs
+│   └── driveline-catcher-velo
+│       ├── exercises.json
+│       ├── program.json
+│       └── program_backup.json
+├── source_tree.txt
+├── types
+│   ├── api.ts
+│   ├── components.ts
+│   ├── database.ts
+│   ├── index.ts
+│   └── workout.ts
+└── views
+    ├── auth
+    │   ├── components
+    │   │   ├── auth-form.tsx
+    │   │   ├── auth-guard.tsx
+    │   │   └── index.tsx
+    │   └── index.tsx
+    ├── onboarding
+    │   ├── components
+    │   │   ├── index.tsx
+    │   │   └── onboarding-form.tsx
+    │   └── index.tsx
+    ├── shared
+    │   └── components
+    │       ├── elements
+    │       │   ├── alert.tsx
+    │       │   ├── card.tsx
+    │       │   ├── checkbox.tsx
+    │       │   ├── confirm-modal.tsx
+    │       │   ├── index.tsx
+    │       │   └── label.tsx
+    │       ├── forms
+    │       │   ├── form-button.tsx
+    │       │   ├── form-card.tsx
+    │       │   ├── form-confirm.tsx
+    │       │   ├── form-field.tsx
+    │       │   ├── form-input.tsx
+    │       │   ├── form-message.tsx
+    │       │   ├── form.tsx
+    │       │   └── index.ts
+    │       ├── layout
+    │       │   └── app-header.tsx
+    │       └── status
+    │           ├── completion-stats.tsx
+    │           ├── index.ts
+    │           ├── loading-spinner.tsx
+    │           ├── progress-bar.tsx
+    │           └── status-badge.tsx
+    └── workout-tracker
+        ├── components
+        │   ├── index.tsx
+        │   ├── tracker-header.tsx
+        │   ├── workout-base.tsx
+        │   ├── workout-detail.tsx
+        │   ├── workout-grid.tsx
+        │   ├── workout-list.tsx
+        │   └── workout-section.tsx
+        ├── index.tsx
+        └── workout-tracker.tsx
+
+32 directories, 70 files

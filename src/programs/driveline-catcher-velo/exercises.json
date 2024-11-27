@@ -1,0 +1,290 @@
+{
+  "categories": {
+    "warmup": {
+      "id": "warmup",
+      "name": "Warm-up Exercises"
+    },
+    "throwing": {
+      "id": "throwing",
+      "name": "Throwing Exercises"
+    },
+    "recovery": {
+      "id": "recovery",
+      "name": "Recovery Exercises"
+    }
+  },
+  "exercises": {
+    "band-halos": {
+      "id": "band-halos",
+      "name": "Pull-Apart Band Halos",
+      "category": "recovery",
+      "defaultReps": "30-60 Secs",
+      "notes": "Maintain consistent tension throughout movement",
+      "videoUrl": "https://vimeo.com/649123401/3ce1022665"
+    },
+    "band-pullaparts": {
+      "id": "band-pullaparts",
+      "name": "Band Pullaparts",
+      "category": "recovery",
+      "defaultReps": "20s per bodypart",
+      "notes": "Part of recovery circuit - focus on scapular control",
+      "videoUrl": "https://vimeo.com/649123467/4c7685341a"
+    },
+    "compression-throws": {
+      "id": "compression-throws",
+      "name": "Compression Phase Throws",
+      "category": "throwing",
+      "defaultReps": "8-12 throws",
+      "defaultRpe": "80-90%",
+      "notes": "Focus on clean mechanics at higher intent"
+    },
+    "foam-roll": {
+      "id": "foam-roll",
+      "name": "Foam Roll",
+      "category": "warmup",
+      "defaultReps": "10s per pass, full body",
+      "notes": "Focus on major muscle groups, especially throwing arm chain"
+    },
+    "full-dynamic-warmup": {
+      "id": "full-dynamic-warmup",
+      "name": "Full Dynamic Warm-up",
+      "category": "warmup",
+      "defaultReps": "10-15 mins",
+      "notes": "Complete full series of dynamic exercises with proper form"
+    },
+    "hip-flexor": {
+      "id": "hip-flexor",
+      "name": "Multi-Planar Hip Flexor Stretch w/Overhead Reach",
+      "category": "recovery",
+      "defaultReps": "30-60 Secs",
+      "notes": "Focus on full range of motion in all planes",
+      "videoUrl": "https://vimeo.com/649123425/60d11c6e03"
+    },
+    "isometrics-abduction-adduction": {
+      "id": "isometrics-abduction-adduction",
+      "name": "Isometric Abduction/Adduction",
+      "category": "recovery",
+      "defaultReps": "2x5 Sec Holds at each position",
+      "notes": "Maintain steady tension throughout the holds",
+      "videoUrl": "https://vimeo.com/649123619/23bb2d1a8d"
+    },
+    "isometrics-extension-flexion": {
+      "id": "isometrics-extension-flexion",
+      "name": "Isometric Extension/Flexion",
+      "category": "recovery",
+      "defaultReps": "2x5 Sec Holds at each position",
+      "notes": "Maintain steady tension throughout the holds",
+      "videoUrl": "https://vimeo.com/649123658/99df52c57f"
+    },
+    "isometrics-rotation": {
+      "id": "isometrics-rotation",
+      "name": "Isometric External Rotation/Internal Rotation",
+      "category": "recovery",
+      "defaultReps": "2x5 Sec Holds at each position",
+      "notes": "Maintain steady tension throughout the holds",
+      "videoUrl": "https://vimeo.com/649123649/c2b63340c3"
+    },
+    "jaeger-bands": {
+      "id": "jaeger-bands",
+      "name": "Jaeger Band Series",
+      "category": "warmup",
+      "defaultReps": "10 reps per exercise",
+      "notes": "Complete full series of band exercises with proper form",
+      "videoUrl": "https://vimeo.com/649123462/4c81d13d87"
+    },
+    "lax-roll": {
+      "id": "lax-roll",
+      "name": "Lacrosse Ball Rollout",
+      "category": "warmup",
+      "defaultReps": "Roughly 20s per body part or to tolerance",
+      "notes": "Target specific areas of tension, focus on shoulder and arm"
+    },
+    "light-catch": {
+      "id": "light-catch",
+      "name": "Light Catch",
+      "category": "throwing",
+      "defaultReps": "Throws to tolerance",
+      "defaultRpe": "60%",
+      "notes": "STRICT 60% RPE MAX - Focus on recovery and arm maintenance",
+      "videoUrl": "https://vimeo.com/648901293/071a72a270"
+    },
+    "light-stretching": {
+      "id": "light-stretching",
+      "name": "Light Stretching (Optional)",
+      "category": "recovery",
+      "defaultReps": "5-10 mins if needed",
+      "notes": "Only if feeling particularly tight or sore"
+    },
+    "long-toss": {
+      "id": "long-toss",
+      "name": "Long Toss",
+      "category": "throwing",
+      "defaultSets": 1,
+      "defaultReps": "Progressive distance throws",
+      "defaultRpe": "80-90%",
+      "notes": "Build up distance gradually, maintain arm slot",
+      "videoUrl": "https://vimeo.com/648905370/80ef2db89b"
+    },
+    "plyo-crow-hops": {
+      "id": "plyo-crow-hops",
+      "name": "Crow Hop Throws",
+      "category": "throwing",
+      "defaultReps": "5 reps each weight",
+      "defaultSets": 1,
+      "notes": "Focus on footwork and transfer of power"
+    },
+    "plyo-dropsteps": {
+      "id": "plyo-dropsteps",
+      "name": "PlyoCare Drop Steps",
+      "category": "throwing",
+      "defaultSets": 1,
+      "defaultReps": "1 throw each with blue, red, yellow, gray",
+      "defaultRpe": "60-70%",
+      "notes": "Focus on quick footwork and exchange",
+      "videoUrl": "https://vimeo.com/648901078/58e0fad05a"
+    },
+    "plyo-halfstance": {
+      "id": "plyo-halfstance",
+      "name": "PlyoCare Half Stance",
+      "category": "throwing",
+      "defaultSets": 1,
+      "defaultReps": "1 throw each with blue, red, yellow, gray",
+      "defaultRpe": "60-70%",
+      "notes": "Focus on balance and throw accuracy",
+      "videoUrl": "https://vimeo.com/648901110/ec8f1390aa"
+    },
+    "plyo-med-throws": {
+      "id": "plyo-med-throws",
+      "name": "Med Ball Throws",
+      "category": "throwing",
+      "defaultReps": "8-10 reps",
+      "defaultSets": 1,
+      "notes": "Focus on explosive movement and proper mechanics"
+    },
+    "plyo-pivot": {
+      "id": "plyo-pivot",
+      "name": "PlyoCare Pivot Pickoffs",
+      "category": "throwing",
+      "defaultSets": 1,
+      "defaultReps": "10 reps with 1kg AND 2kg balls",
+      "defaultRpe": "60-70%",
+      "notes": "Focus on footwork and quick exchange",
+      "videoUrl": "https://vimeo.com/648901160/cef5a4ed20"
+    },
+    "plyo-rebounders": {
+      "id": "plyo-rebounders",
+      "name": "PlyoCare Rebounders",
+      "category": "recovery",
+      "defaultReps": "10 reps with 1kg AND 2kg balls",
+      "notes": "Circuit work - maintain consistent rhythm",
+      "videoUrl": "https://vimeo.com/649123772/9acd2778dd"
+    },
+    "plyo-reverse": {
+      "id": "plyo-reverse",
+      "name": "PlyoCare Reverse Throws",
+      "category": "throwing",
+      "defaultSets": 1,
+      "defaultReps": "10 reps with 1 kg AND 2 kg balls",
+      "defaultRpe": "60-70%",
+      "notes": "Focus on deceleration and arm path",
+      "videoUrl": "https://vimeo.com/648901279/071a72a256"
+    },
+    "plyo-rollin": {
+      "id": "plyo-rollin",
+      "name": "PlyoCare Roll-In Throws",
+      "category": "throwing",
+      "defaultSets": 1,
+      "defaultReps": "10 reps with 1kg AND 450g balls",
+      "defaultRpe": "60-70%",
+      "notes": "Practice quick exchange and footwork",
+      "videoUrl": "https://vimeo.com/648901319/1758c5223e"
+    },
+    "plyo-stepbacks": {
+      "id": "plyo-stepbacks",
+      "name": "PlyoCare Catcher Step Backs",
+      "category": "throwing",
+      "defaultSets": 1,
+      "defaultReps": "1 throw each with blue, red, yellow, gray",
+      "defaultRpe": "60-70%",
+      "notes": "Practice footwork and throwing mechanics",
+      "videoUrl": "https://vimeo.com/648901044/e4c3647969"
+    },
+    "plyo-wall-throws": {
+      "id": "plyo-wall-throws",
+      "name": "Wall Throws",
+      "category": "throwing",
+      "defaultReps": "10 reps each position",
+      "defaultSets": 1,
+      "notes": "Work on proper arm path and mechanics"
+    },
+    "radar-throws": {
+      "id": "radar-throws",
+      "name": "Radar Gun Throws",
+      "category": "throwing",
+      "defaultReps": "5-8 throws",
+      "defaultRpe": "90-100%",
+      "notes": "Track velocity and maintain mechanics"
+    },
+    "recovery-activities": {
+      "id": "recovery-activities",
+      "name": "Recovery Activities (Optional)",
+      "category": "recovery",
+      "defaultReps": "As desired",
+      "notes": "Light walking, swimming, or other low-intensity activities if desired"
+    },
+    "rest-recommendations": {
+      "id": "rest-recommendations",
+      "name": "Rest Day Recommendations",
+      "category": "recovery",
+      "defaultReps": "As needed",
+      "notes": "Focus on quality sleep (7-9 hours), staying hydrated, and proper nutrition"
+    },
+    "throwdowns-long": {
+      "id": "throwdowns-long",
+      "name": "*Throwdowns Long Spread (Weeks 5/6)",
+      "category": "throwing",
+      "defaultReps": "Weeks 5/6: 2-3 throws each (5, 6, 7, 5, 4, 3)",
+      "notes": "One minute minimum rest between weight changes. First throw at 80% intent, then build up. For 2B/3B practice."
+    },
+    "throwdowns-short": {
+      "id": "throwdowns-short",
+      "name": "*Throwdowns Short Spread (Weeks 3/4)",
+      "category": "throwing",
+      "defaultReps": "Weeks 3/4: 3-4 throws each (5, 6, 4)",
+      "notes": "Take at least 1 minute rest between ball weights. First throw at 80% intent, then build up. For 2B practice."
+    },
+    "upward-tosses": {
+      "id": "upward-tosses",
+      "name": "Upward Tosses",
+      "category": "recovery",
+      "defaultReps": "15 reps with 2kg ball",
+      "notes": "Focus on shoulder control and catch position",
+      "videoUrl": "https://vimeo.com/649123526/80de208fca"
+    },
+    "waiter-walks": {
+      "id": "waiter-walks",
+      "name": "Waiter Walks",
+      "category": "recovery",
+      "defaultReps": "approx 20 yards",
+      "notes": "Circuit exercise - maintain shoulder stability",
+      "videoUrl": "https://vimeo.com/649123526/80de208fca"
+    },
+    "weighted-ball-catch": {
+      "id": "weighted-ball-catch",
+      "name": "Weighted Ball Catch Play",
+      "category": "throwing",
+      "defaultSets": 1,
+      "defaultReps": "5 throws each - 11oz, 9oz, 7oz, 5oz throws to tolerance (~70% RPE)",
+      "defaultRpe": "70%",
+      "notes": "Finish with 5 throws with 4oz. Rest between weight changes."
+    },
+    "wrist-weights": {
+      "id": "wrist-weights",
+      "name": "Wrist Weight Series",
+      "category": "warmup",
+      "defaultReps": "10 reps per exercise",
+      "notes": "Complete all wrist weight exercises with control",
+      "videoUrl": "https://vimeo.com/649123462/4c81d13d87"
+    }
+  }
+}

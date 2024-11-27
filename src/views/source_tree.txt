@@ -1,0 +1,52 @@
+.
+├── auth
+│   └── components
+│       ├── auth-form.tsx
+│       ├── auth-guard.tsx
+│       └── index.ts
+├── onboarding
+│   ├── components
+│   │   ├── index.ts
+│   │   └── onboarding-form.tsx
+│   └── index.ts
+├── shared
+│   └── components
+│       ├── elements
+│       │   ├── alert.tsx
+│       │   ├── card.tsx
+│       │   ├── checkbox.tsx
+│       │   ├── confirm-modal.tsx
+│       │   ├── index.ts
+│       │   └── label.ts
+│       ├── forms
+│       │   ├── form-button.tsx
+│       │   ├── form-card.tsx
+│       │   ├── form-confirm.tsx
+│       │   ├── form-field.tsx
+│       │   ├── form-input.tsx
+│       │   ├── form-message.tsx
+│       │   ├── form.tsx
+│       │   └── index.ts
+│       ├── layout
+│       │   ├── app-header.tsx
+│       │   └── index.ts
+│       └── status
+│           ├── completion-stats.tsx
+│           ├── index.ts
+│           ├── loading-spinner.tsx
+│           ├── progress-bar.tsx
+│           └── status-badge.tsx
+├── source_tree.txt
+└── workout-tracker
+    ├── components
+    │   ├── index.ts
+    │   ├── workout-base.tsx
+    │   ├── workout-detail.tsx
+    │   ├── workout-grid.tsx
+    │   ├── workout-header.tsx
+    │   ├── workout-list.tsx
+    │   └── workout-section.tsx
+    ├── index.ts
+    └── workout-tracker.tsx
+
+13 directories, 37 files

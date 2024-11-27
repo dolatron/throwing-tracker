@@ -53,16 +53,15 @@
 │   └── workout.ts
 └── views
     ├── auth
-    │   ├── components
-    │   │   ├── auth-form.tsx
-    │   │   ├── auth-guard.tsx
-    │   │   └── index.tsx
-    │   └── index.tsx
+    │   └── components
+    │       ├── auth-form.tsx
+    │       ├── auth-guard.tsx
+    │       └── index.ts
     ├── onboarding
     │   ├── components
-    │   │   ├── index.tsx
+    │   │   ├── index.ts
     │   │   └── onboarding-form.tsx
-    │   └── index.tsx
+    │   └── index.ts
     ├── shared
     │   └── components
     │       ├── elements
@@ -70,8 +69,8 @@
     │       │   ├── card.tsx
     │       │   ├── checkbox.tsx
     │       │   ├── confirm-modal.tsx
-    │       │   ├── index.tsx
-    │       │   └── label.tsx
+    │       │   ├── index.ts
+    │       │   └── label.ts
     │       ├── forms
     │       │   ├── form-button.tsx
     │       │   ├── form-card.tsx
@@ -82,23 +81,25 @@
     │       │   ├── form.tsx
     │       │   └── index.ts
     │       ├── layout
-    │       │   └── app-header.tsx
+    │       │   ├── app-header.tsx
+    │       │   └── index.ts
     │       └── status
     │           ├── completion-stats.tsx
     │           ├── index.ts
     │           ├── loading-spinner.tsx
     │           ├── progress-bar.tsx
     │           └── status-badge.tsx
+    ├── source_tree.txt
     └── workout-tracker
         ├── components
-        │   ├── index.tsx
-        │   ├── tracker-header.tsx
+        │   ├── index.ts
         │   ├── workout-base.tsx
         │   ├── workout-detail.tsx
         │   ├── workout-grid.tsx
+        │   ├── workout-header.tsx
         │   ├── workout-list.tsx
         │   └── workout-section.tsx
-        ├── index.tsx
+        ├── index.ts
         └── workout-tracker.tsx
 
-32 directories, 70 files
+32 directories, 71 files

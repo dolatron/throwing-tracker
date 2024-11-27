@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { OnboardingForm } from '@/components/onboarding/OnboardingForm';
+import { OnboardingForm } from '@/views/onboarding/components/onboarding-form';
 import { useAuth } from '@/hooks/useAuth';
 import { LoadingSpinner } from '@/views/shared/components/status/loading-spinner';
 

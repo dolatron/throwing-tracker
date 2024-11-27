@@ -1,5 +1,5 @@
 // views/tracker/components/index.ts
-export * from './tracker-header';
+export * from './workout-header';
 export * from './workout-base';
 export * from './workout-grid';
 export * from './workout-list';

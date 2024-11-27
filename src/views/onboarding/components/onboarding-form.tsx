@@ -1,16 +1,10 @@
 'use client';
-// views/onboarding/components/onboarding-form.tsx
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useAuth } from '@/hooks/useAuth';
-import { 
-  FormCard, 
-  FormInput, 
-  FormButton, 
-  FormMessage 
-} from '@/views/shared/components/forms';
+import { FormCard, FormInput, FormButton, FormMessage } from '@/views/shared/components/forms';
 import type { BaseProps } from '@/types';
 
 export function OnboardingForm({ className }: BaseProps) {

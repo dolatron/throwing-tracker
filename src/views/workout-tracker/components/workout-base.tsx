@@ -7,7 +7,7 @@ import { Card } from '@/views/shared/components/elements';
 import { cn } from '@/lib/utils';
 import { useProgram } from '@/hooks/useProgram';
 import { WorkoutDetail } from './workout-detail';
-import type { DayWorkout, Schedule, ViewMode } from '@/types/workout';
+import type { DayWorkout, Schedule, ViewMode } from '@/types';
 
 // Utility functions
 const getBaseWorkout = (workout: string): string => {

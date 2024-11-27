@@ -5,7 +5,7 @@ import { Alert } from '@/views/shared/components/elements/alert';
 import { useProgram } from '@/hooks/useProgram';
 import { useWorkoutState } from '@/hooks/useWorkoutState';
 import { useWorkoutSync } from '@/hooks/useWorkoutSync';
-import { TrackerHeader, WorkoutGrid, WorkoutList } from './components';
+import { WorkoutHeader, WorkoutGrid, WorkoutList } from './components';
 
 export interface WorkoutTrackerProps {
   userId: string;
@@ -79,7 +79,7 @@ export function WorkoutTracker({ userId, programId }: WorkoutTrackerProps) {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <TrackerHeader
+      <WorkoutHeader
         title={programData.name}
         viewMode={viewMode}
         onViewModeChange={setViewMode}

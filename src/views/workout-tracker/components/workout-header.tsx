@@ -1,20 +1,20 @@
-// views/tracker/components/tracker-header.tsx
+// views/tracker/components/workout-header.tsx
 'use client';
 
 import { LayoutGrid, LayoutList } from 'lucide-react';
 import type { ViewMode } from '@/types/workout';
 
-export interface TrackerHeaderProps {
+export interface WorkoutHeaderProps {
   title: string;
   viewMode: ViewMode;
   onViewModeChange: (mode: ViewMode) => void;
 }
 
-export function TrackerHeader({
+export function WorkoutHeader({
   title,
   viewMode,
   onViewModeChange
-}: TrackerHeaderProps) {
+}: WorkoutHeaderProps) {
   return (
     <div className="mb-6 space-y-4">
       <div className="flex justify-between items-center">

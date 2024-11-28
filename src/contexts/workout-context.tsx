@@ -10,6 +10,7 @@ type WorkoutAction =
   | { type: 'SET_VIEW_MODE'; payload: ViewMode }
   | { type: 'SET_EXPANDED_WORKOUT'; payload: string | null }
   | { type: 'UPDATE_SCHEDULE'; payload: Schedule }
+  | { type: 'SET_START_DATE'; payload: Date }
   | { type: 'COMPLETE_EXERCISE'; payload: { weekIndex: number; dayIndex: number; exerciseId: string } }
   | { type: 'UPDATE_NOTES'; payload: { weekIndex: number; dayIndex: number; notes: string } }
   | { type: 'BATCH_COMPLETE'; payload: { weekIndex: number; dayIndex: number; exerciseIds: string[]; completed: boolean } }
@@ -21,10 +22,12 @@ interface WorkoutContextType {
   schedule: Schedule;
   expandedWorkoutId: string | null;
   viewMode: ViewMode;
+  startDate: Date;
   isLoading: boolean;
   setViewMode: (mode: ViewMode) => void;
   setExpandedWorkout: (workoutId: string | null) => void;
   setSchedule: (schedule: Schedule) => void;
+  setStartDate: (date: Date) => void;
   fetchWorkouts: (userId: string, programId: string) => Promise<ApiResponse<DayWorkout[]>>;
   handleExerciseComplete: (weekIndex: number, dayIndex: number, exerciseId: string, userId: string) => Promise<ApiResponse<void>>;
   handleBatchComplete: (weekIndex: number, dayIndex: number, exerciseIds: string[], completed: boolean, userId: string) => Promise<ApiResponse<void>>;
@@ -36,6 +39,7 @@ const initialState: WorkoutState = {
   schedule: [],
   expandedWorkoutId: null,
   viewMode: 'calendar',
+  startDate: new Date(),
   isLoading: false
 };
 
@@ -59,6 +63,12 @@ function workoutReducer(state: WorkoutState, action: WorkoutAction): WorkoutStat
       return {
         ...state,
         schedule: action.payload
+      };
+
+    case 'SET_START_DATE':
+      return {
+        ...state,
+        startDate: action.payload
       };
 
     case 'COMPLETE_EXERCISE': {
@@ -153,6 +163,10 @@ export function WorkoutProvider({ children }: { children: React.ReactNode }) {
 
   const setSchedule = useCallback((schedule: Schedule) => {
     dispatch({ type: 'UPDATE_SCHEDULE', payload: schedule });
+  }, []);
+
+  const setStartDate = useCallback((date: Date) => {
+    dispatch({ type: 'SET_START_DATE', payload: date });
   }, []);
 
   const fetchWorkouts = useCallback(async (userId: string, programId: string): Promise<ApiResponse<DayWorkout[]>> => {
@@ -293,10 +307,12 @@ export function WorkoutProvider({ children }: { children: React.ReactNode }) {
     schedule: state.schedule,
     expandedWorkoutId: state.expandedWorkoutId,
     viewMode: state.viewMode,
+    startDate: state.startDate,
     isLoading: state.isLoading,
     setViewMode,
     setExpandedWorkout,
     setSchedule,
+    setStartDate,
     fetchWorkouts,
     handleExerciseComplete,
     handleBatchComplete,
@@ -305,10 +321,12 @@ export function WorkoutProvider({ children }: { children: React.ReactNode }) {
     state.schedule,
     state.expandedWorkoutId,
     state.viewMode,
+    state.startDate,
     state.isLoading,
     setViewMode,
     setExpandedWorkout,
     setSchedule,
+    setStartDate,
     fetchWorkouts,
     handleExerciseComplete,
     handleBatchComplete,

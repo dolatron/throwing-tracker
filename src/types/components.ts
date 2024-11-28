@@ -1,6 +1,6 @@
 // types/components.ts
 import type { ReactNode } from 'react';
-import type { DayWorkout, Exercise, UserWorkout, WorkoutProgram } from './workout';
+import type { DayWorkout, Exercise } from './workout';
 
 export interface BaseProps {
   className?: string;

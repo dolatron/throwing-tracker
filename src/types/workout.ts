@@ -119,6 +119,7 @@ export interface WorkoutState {
   expandedWorkoutId: string | null;
   viewMode: ViewMode;
   startDate: Date;
+  isLoading: boolean;
 }
 
 export interface WorkoutProgress {
@@ -130,12 +131,13 @@ export interface WorkoutProgress {
 export type WorkoutAction =
   | { type: 'SET_VIEW_MODE'; payload: ViewMode }
   | { type: 'SET_EXPANDED_WORKOUT'; payload: string | null }
-  | { type: 'UPDATE_SCHEDULE'; payload: Schedule }
+  | { type: 'UPDATE_SCHEDULE'; payload: Schedule } // Changed from DayWorkout[] to Schedule
   | { type: 'SET_START_DATE'; payload: Date }
   | { type: 'COMPLETE_EXERCISE'; payload: { weekIndex: number; dayIndex: number; exerciseId: string } }
   | { type: 'UPDATE_NOTES'; payload: { weekIndex: number; dayIndex: number; notes: string } }
   | { type: 'BATCH_COMPLETE'; payload: { weekIndex: number; dayIndex: number; exerciseIds: string[]; completed: boolean } }
-  | { type: 'CLEAR_SCHEDULE' };
+  | { type: 'CLEAR_SCHEDULE' }
+  | { type: 'SET_LOADING'; payload: boolean };
 
 // Program Configuration Types
 export interface ProgramConfig {
@@ -149,6 +151,7 @@ export interface ProgramConfig {
 export interface ProgramState extends ProgramConfig {
   isInitialized: boolean;
   error?: Error;
+  isLoading: boolean;
 }
 
 export type ProgramAction =

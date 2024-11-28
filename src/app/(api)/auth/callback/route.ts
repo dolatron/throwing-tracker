@@ -23,7 +23,6 @@ export async function GET(request: Request) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
   } catch (error) {
     console.error('Auth callback error:', error);
-    // Redirect to login on error
-    return NextResponse.redirect(new URL('/auth/login', request.url));
+    return NextResponse.redirect(new URL('/onboard', request.url));
   }
 }

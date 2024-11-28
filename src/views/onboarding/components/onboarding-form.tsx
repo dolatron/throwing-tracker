@@ -1,24 +1,35 @@
+// views/onboarding/components/onboarding-form.tsx
 'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useAuth } from '@/hooks/useAuth';
+import { useProgram } from '@/contexts/program-context';
 import { FormCard, FormInput, FormButton, FormMessage } from '@/views/shared/components/forms';
 import type { BaseProps } from '@/types';
+import type { ApiResponse } from '@/types/api';
+
+interface FormData {
+  email: string;
+  firstName: string;
+  programId: string;
+}
+
+const DEFAULT_PROGRAM_ID = 'catcher-velo-program';
 
 export function OnboardingForm({ className }: BaseProps) {
   const router = useRouter();
   const { user, signIn } = useAuth();
-  const [formData, setFormData] = useState({
-    email: '',
-    name: '',
-  });
+  const { createUserProgram } = useProgram();
+  
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
-  
-  const supabase = createClientComponentClient();
+  const [formData, setFormData] = useState<FormData>({
+    email: '',
+    firstName: '',
+    programId: DEFAULT_PROGRAM_ID
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,19 +38,26 @@ export function OnboardingForm({ className }: BaseProps) {
 
     try {
       if (user) {
-        // Update user profile
-        const { error: updateError } = await supabase
-          .from('users')
-          .update({ name: formData.name })
-          .eq('id', user.id);
+        // Create program using the program context
+        const result = await createUserProgram(
+          user.id, 
+          formData.programId,
+          formData.firstName
+        );
 
-        if (updateError) throw updateError;
-
-        // Redirect to dashboard
+        if (result.error) {
+          throw new Error(typeof result.error === 'string' ? result.error : 'Failed to create program');
+        }
+        
         router.push('/dashboard');
       } else {
-        // Start magic link flow
-        await signIn(formData.email);
+        // Start magic link flow for new users
+        const result = await signIn(formData.email);
+        
+        if (result.error) {
+          throw new Error(typeof result.error === 'string' ? result.error : 'Failed to sign in');
+        }
+        
         setSuccess(true);
       }
     } catch (err) {
@@ -63,7 +81,9 @@ export function OnboardingForm({ className }: BaseProps) {
       <FormCard
         title="Check your email"
         subtitle="We sent you a login link. Be sure to check your spam too."
-      />
+      >
+        {null}
+      </FormCard>
     );
   }
 
@@ -73,15 +93,16 @@ export function OnboardingForm({ className }: BaseProps) {
       subtitle={user
         ? 'Please enter your name to complete your profile'
         : 'Enter your email to get started'}
+      className={className}
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         {user ? (
           <FormInput
-            id="name"
-            name="name"
+            id="firstName"
+            name="firstName"
             type="text"
             label="Name"
-            value={formData.name}
+            value={formData.firstName}
             onChange={handleInputChange}
             required
           />
@@ -94,6 +115,7 @@ export function OnboardingForm({ className }: BaseProps) {
             value={formData.email}
             onChange={handleInputChange}
             required
+            autoComplete="email"
           />
         )}
 
@@ -111,7 +133,7 @@ export function OnboardingForm({ className }: BaseProps) {
           {isLoading 
             ? 'Loading...' 
             : user 
-              ? 'Continue' 
+              ? 'Complete Setup' 
               : 'Get Started'
           }
         </FormButton>

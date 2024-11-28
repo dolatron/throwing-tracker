@@ -1,4 +1,4 @@
-// middleware/auth.ts
+// middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
     // Handle auth paths
     if (request.nextUrl.pathname.startsWith('/auth')) {
       if (session) {
-        // If user is signed in, redirect to dashboard
+        // Redirect authenticated users to dashboard
         return NextResponse.redirect(new URL('/dashboard', request.url));
       }
       // Allow access to auth pages if not signed in
@@ -23,9 +23,22 @@ export async function middleware(request: NextRequest) {
     }
 
     // Handle protected paths
-    if (request.nextUrl.pathname.startsWith('/dashboard')) {
+    if (request.nextUrl.pathname.startsWith('/dashboard') || 
+        request.nextUrl.pathname.startsWith('/api/workouts')) {
       if (!session) {
-        // If no session, redirect to onboarding
+        // Redirect unauthenticated users to onboarding
+        return NextResponse.redirect(new URL('/onboard', request.url));
+      }
+
+      // Check if user has completed onboarding
+      const { data: userData, error: userError } = await supabase
+        .from('users')
+        .select('name, user_programs(id)')
+        .eq('id', session.user.id)
+        .single();
+
+      if (userError || !userData?.name || !userData?.user_programs?.length) {
+        // Redirect users who haven't completed onboarding
         return NextResponse.redirect(new URL('/onboard', request.url));
       }
     }
@@ -33,7 +46,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   } catch (error) {
     console.error('Middleware error:', error);
-    // Default to onboarding instead of login
     return NextResponse.redirect(new URL('/onboard', request.url));
   }
 }

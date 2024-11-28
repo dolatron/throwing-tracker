@@ -1,16 +1,17 @@
 // views/workout-tracker/components/workout-detail.tsx
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { X } from 'lucide-react';
 import { Card } from '@/views/shared/components/elements/card';
 import { cn } from '@/lib/utils';
 import { CompletionStats } from '@/views/shared/components/status/completion-stats';
 import { useProgram } from '@/hooks/useProgram';
+import { useWorkout } from '@/hooks/useWorkout';
 import { getWorkoutProgram, calculateWorkoutStats } from '@/lib/workout';
-import type { DayWorkout } from '@/types/workout';
+import type { DayWorkout } from '@/types';
 import { LoadingSpinner } from '@/views/shared/components/status';
-import { WorkoutSection } from '@/views/workout-tracker/components/workout-section';
+import { WorkoutSection } from './workout-section';
 
 // Internal Action Buttons Component
 interface ActionButtonsProps {
@@ -61,7 +62,7 @@ function ActionButtons({
           "disabled:opacity-50 disabled:cursor-not-allowed"
         )}
       >
-        Complete
+        Complete All
       </button>
     </div>
   );
@@ -72,14 +73,12 @@ interface NotesProps {
   value: string;
   onChange: (value: string) => void;
   className?: string;
-  autoFocus?: boolean;
 }
 
 function WorkoutNotes({
   value = '',
   onChange,
-  className,
-  autoFocus = false
+  className
 }: NotesProps) {
   return (
     <div className={cn("space-y-2", className)}>
@@ -91,7 +90,6 @@ function WorkoutNotes({
         onChange={(e) => onChange(e.target.value)}
         placeholder="Add notes about your workout..."
         className="w-full min-h-[100px] p-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-y"
-        autoFocus={autoFocus}
       />
     </div>
   );
@@ -103,9 +101,7 @@ export interface WorkoutDetailProps {
   weekIndex: number;
   dayIndex: number;
   onClose: () => void;
-  onExerciseComplete: (exerciseId: string) => void;
-  onBatchComplete: (exerciseIds: string[], completed: boolean) => void;
-  onNotesChange: (notes: string) => void;
+  userId: string;
 }
 
 const DATE_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
@@ -119,11 +115,14 @@ export function WorkoutDetail({
   weekIndex,
   dayIndex,
   onClose,
-  onExerciseComplete,
-  onBatchComplete,
-  onNotesChange
+  userId
 }: WorkoutDetailProps) {
   const { programData, exerciseData } = useProgram();
+  const { 
+    handleBatchComplete,
+    handleNotesUpdate,
+    isLoading 
+  } = useWorkout();
 
   // Get workout program
   const workoutProgram = useMemo(() => {
@@ -141,10 +140,20 @@ export function WorkoutDetail({
   }, [day, programData]);
 
   // Get workout type info
-  const workoutType = useMemo(() => 
-    programData?.workoutTypes?.[day.workout], 
-    [programData, day.workout]
-  );
+  const workoutType = useMemo(() => {
+    if (!programData?.workoutTypes) {
+      console.warn('Program data or workout types not available');
+      return null;
+    }
+  
+    const workoutConfig = programData.workoutTypes[day.workout];
+    if (!workoutConfig) {
+      console.warn(`Workout type ${day.workout} not found in program data`);
+      return null;
+    }
+  
+    return workoutConfig;
+  }, [programData, day.workout]);
 
   // Calculate sections and exercise IDs
   const { sections, allExerciseIds } = useMemo(() => {
@@ -165,14 +174,56 @@ export function WorkoutDetail({
     return { sections, allExerciseIds };
   }, [workoutProgram, weekIndex, dayIndex]);
 
-  const handleComplete = () => {
-    onBatchComplete(allExerciseIds, true);
-    onClose();
+  const handleNotes = async (notes: string) => {
+    await handleNotesUpdate(weekIndex, dayIndex, notes, userId);
   };
 
-  const handleClear = () => {
-    onBatchComplete(allExerciseIds, false);
-  };
+// Inside WorkoutDetail component
+
+const [isCompleting, setIsCompleting] = useState(false);
+const [error, setError] = useState<string | null>(null);
+
+const handleComplete = async () => {
+  setIsCompleting(true);
+  setError(null);
+  
+  try {
+    const result = await handleBatchComplete(weekIndex, dayIndex, allExerciseIds, true, userId);
+    
+    if (result.error) {
+      throw new Error(typeof result.error === 'string' ? result.error : 'Failed to complete workout');
+    }
+    
+    onClose();
+  } catch (err) {
+    console.error('Failed to complete workout:', err);
+    setError(err instanceof Error ? err.message : 'Failed to complete workout');
+  } finally {
+    setIsCompleting(false);
+  }
+};
+
+const handleClear = async () => {
+  if (!window.confirm('Are you sure you want to clear all progress?')) {
+    return;
+  }
+
+  setIsCompleting(true);
+  setError(null);
+
+  try {
+    const result = await handleBatchComplete(weekIndex, dayIndex, allExerciseIds, false, userId);
+    
+    if (result.error) {
+      throw new Error(typeof result.error === 'string' ? result.error : 'Failed to clear workout');
+    }
+  } catch (err) {
+    console.error('Failed to clear workout:', err);
+    setError(err instanceof Error ? err.message : 'Failed to clear workout');
+  } finally {
+    setIsCompleting(false);
+  }
+};
 
   // Show loading state if program data isn't ready
   if (!workoutProgram || !programData) {
@@ -240,8 +291,10 @@ export function WorkoutDetail({
             title={section.title}
             exercises={section.exercises}
             completed={day.completed}
-            onComplete={onExerciseComplete}
+            weekIndex={weekIndex}
+            dayIndex={dayIndex}
             sectionId={`week${weekIndex}-day${dayIndex}-${section.title.toLowerCase()}`}
+            userId={userId}
           />
         ))}
         
@@ -249,7 +302,7 @@ export function WorkoutDetail({
         <div className="rounded-lg p-3 sm:p-6">
           <WorkoutNotes
             value={day.userNotes || ''}
-            onChange={onNotesChange}
+            onChange={handleNotes}
           />
         </div>
       </div>
@@ -258,6 +311,7 @@ export function WorkoutDetail({
       <ActionButtons
         onComplete={handleComplete}
         onClear={handleClear}
+        disabled={isLoading}
       />
     </Card>
   );

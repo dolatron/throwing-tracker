@@ -1,8 +1,7 @@
-'use client';
 // views/auth/components/auth-form.tsx
+'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { 
   FormCard, 
@@ -11,12 +10,11 @@ import {
   FormMessage 
 } from '@/views/shared/components/forms';
 
-export interface AuthFormProps {
+interface AuthFormProps {
   type: 'sign-in' | 'sign-up';
 }
 
 export function AuthForm({ type }: AuthFormProps) {
-  const router = useRouter();
   const { signIn } = useAuth();
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +27,8 @@ export function AuthForm({ type }: AuthFormProps) {
     setError(null);
 
     try {
-      await signIn(email);
+      const { error } = await signIn(email);
+      if (error) throw new Error(error);
       setSuccess(true);
     } catch (err) {
       console.error('Authentication error:', err);
@@ -44,7 +43,9 @@ export function AuthForm({ type }: AuthFormProps) {
       <FormCard
         title="Check your email"
         subtitle="We sent you a login link. Be sure to check your spam too."
-      />
+      >
+        {null}
+      </FormCard>
     );
   }
 
@@ -74,15 +75,14 @@ export function AuthForm({ type }: AuthFormProps) {
         >
           {type === 'sign-in' ? 'Sign in' : 'Get started'}
         </FormButton>
-      </form>
 
-      {error && (
-        <FormMessage
-          type="error"
-          message={error}
-          className="mt-4"
-        />
-      )}
+        {error && (
+          <FormMessage
+            type="error"
+            message={error}
+          />
+        )}
+      </form>
     </FormCard>
   );
 }

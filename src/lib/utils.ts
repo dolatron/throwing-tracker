@@ -52,47 +52,95 @@ export const validate = <T>(schema: z.Schema<T>, data: unknown): T => {
 };
 
 // Error handling
+// lib/utils.ts
+
 export class AppError extends Error {
   constructor(
     message: string,
     public code: string,
-    public status: number
+    public status: number,
+    public originalError?: unknown
   ) {
     super(message);
     this.name = 'AppError';
     Object.setPrototypeOf(this, AppError.prototype);
   }
 
-  static notFound(message = 'Resource not found') {
-    return new AppError(message, 'NOT_FOUND', 404);
+  static notFound(message = 'Resource not found', originalError?: unknown) {
+    return new AppError(message, 'NOT_FOUND', 404, originalError);
   }
 
-  static badRequest(message = 'Invalid request') {
-    return new AppError(message, 'BAD_REQUEST', 400);
+  static badRequest(message = 'Invalid request', originalError?: unknown) {
+    return new AppError(message, 'BAD_REQUEST', 400, originalError);
   }
 
-  static unauthorized(message = 'Unauthorized') {
-    return new AppError(message, 'UNAUTHORIZED', 401);
+  static unauthorized(message = 'Unauthorized', originalError?: unknown) {
+    return new AppError(message, 'UNAUTHORIZED', 401, originalError);
+  }
+
+  static forbidden(message = 'Forbidden', originalError?: unknown) {
+    return new AppError(message, 'FORBIDDEN', 403, originalError);
+  }
+
+  static internal(message = 'Internal server error', originalError?: unknown) {
+    return new AppError(message, 'INTERNAL_ERROR', 500, originalError);
   }
 }
 
-export const handleApiError = (error: unknown): { message: string; status: number } => {
+interface ErrorResponse {
+  message: string;
+  status: number;
+  code?: string;
+  details?: unknown;
+}
+
+export const handleApiError = (error: unknown): ErrorResponse => {
+  // Handle AppError instances
   if (error instanceof AppError) {
     return {
       message: error.message,
-      status: error.status
+      status: error.status,
+      code: error.code,
+      details: error.originalError
     };
   }
 
+  // Handle standard Error instances
   if (error instanceof Error) {
     return {
       message: error.message,
+      status: 500,
+      details: error
+    };
+  }
+
+  // Handle Supabase errors
+  if (typeof error === 'object' && error !== null && 'code' in error) {
+    const supabaseError = error as { code: string; message?: string; details?: string };
+    return {
+      message: supabaseError.message || 'Database error occurred',
+      status: 500,
+      code: supabaseError.code,
+      details: supabaseError.details
+    };
+  }
+
+  // Handle string errors
+  if (typeof error === 'string') {
+    return {
+      message: error,
       status: 500
     };
   }
 
+  // Default case for unknown error types
   return {
     message: 'An unexpected error occurred',
-    status: 500
+    status: 500,
+    details: error
   };
+};
+
+export const isApiError = (error: unknown): error is AppError => {
+  return error instanceof AppError;
 };

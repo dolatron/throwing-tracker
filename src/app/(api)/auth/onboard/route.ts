@@ -2,30 +2,31 @@
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
+import type { ApiResponse } from '@/types/api';
+import type { OnboardRequest } from '@/types/api';
 
 export const dynamic = 'force-dynamic';
 
-export async function POST(request: Request): Promise<Response> {
+export async function POST(request: Request): Promise<NextResponse<ApiResponse<{ userId: string; programId: string }>>> {
   const supabase = createRouteHandlerClient({ cookies });
-  let body;
+  let body: OnboardRequest;
   
   try {
     body = await request.json();
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Invalid request body' },
-      { status: 400 }
-    );
+    return NextResponse.json({
+      error: 'Invalid request body',
+      status: 400
+    });
   }
 
   const { firstName, email, programId } = body;
 
-  // Validate required fields
   if (!email || !programId) {
-    return NextResponse.json(
-      { error: 'Missing required fields' },
-      { status: 400 }
-    );
+    return NextResponse.json({
+      error: 'Missing required fields',
+      status: 400
+    });
   }
 
   try {
@@ -36,11 +37,11 @@ export async function POST(request: Request): Promise<Response> {
       .eq('email', email)
       .single();
 
-    if (lookupError && lookupError.code !== 'PGRST116') { // PGRST116 is "no rows returned"
+    if (lookupError && lookupError.code !== 'PGRST116') {
       throw lookupError;
     }
 
-    let userId;
+    let userId: string;
 
     if (existingUser) {
       userId = existingUser.id;
@@ -84,9 +85,11 @@ export async function POST(request: Request): Promise<Response> {
 
     if (existingProgram) {
       return NextResponse.json({ 
-        userId,
-        programId: existingProgram.id,
-        isExisting: true
+        data: {
+          userId,
+          programId: existingProgram.id
+        },
+        status: 200
       });
     }
 
@@ -106,15 +109,17 @@ export async function POST(request: Request): Promise<Response> {
     if (programError) throw programError;
 
     return NextResponse.json({ 
-      userId,
-      programId: programData.id,
-      isExisting: false
+      data: {
+        userId,
+        programId: programData.id
+      },
+      status: 200
     });
   } catch (error) {
     console.error('Onboarding error:', error);
-    return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Internal server error' }, 
-      { status: 500 }
-    );
+    return NextResponse.json({
+      error: error instanceof Error ? error.message : 'Internal server error',
+      status: 500
+    });
   }
 }

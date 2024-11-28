@@ -1,80 +1,129 @@
-// views/tracker/workout-tracker.tsx
 'use client';
 
-import { Alert } from '@/views/shared/components/elements/alert';
+import { useEffect, useState } from 'react';
 import { useProgram } from '@/hooks/useProgram';
-import { useWorkoutState } from '@/hooks/useWorkoutState';
-import { useWorkoutSync } from '@/hooks/useWorkoutSync';
-import { WorkoutHeader, WorkoutGrid, WorkoutList } from './components';
+import { useWorkout } from '@/hooks/useWorkout';
+import { generateSchedule } from '@/lib/workout';
+import { LoadingSpinner } from '@/views/shared/components/status';
+import { WorkoutHeader } from './components/workout-header';
+import { WorkoutGrid } from './components/workout-grid';
+import { WorkoutList } from './components/workout-list';
+import type { Schedule } from '@/types/workout';
+import type { ApiResponse } from '@/types/api';
 
 export interface WorkoutTrackerProps {
   userId: string;
   programId: string;
 }
 
+interface SavedWorkout {
+  id: string;
+  completed: Record<string, boolean>;
+  userNotes?: string;
+}
+
 export function WorkoutTracker({ userId, programId }: WorkoutTrackerProps) {
   const { programData } = useProgram();
-  const {
+  const { 
     schedule,
     expandedWorkoutId,
     viewMode,
     setViewMode,
     setExpandedWorkout,
-    completeExercise,
-    updateNotes,
-    batchComplete,
-  } = useWorkoutState(programId);
+    setSchedule,
+    fetchWorkouts,
+    handleExerciseComplete,
+    handleBatchComplete,
+    handleNotesUpdate,
+    isLoading: isSyncing 
+  } = useWorkout();
 
-  const { syncWorkoutToDb, isSyncing, error } = useWorkoutSync();
+  const [isInitializing, setIsInitializing] = useState(true);
 
-  const handleExerciseComplete = async (weekIndex: number, dayIndex: number, exerciseId: string) => {
-    if (!userId) return;
+  useEffect(() => {
+    let mounted = true;
 
-    completeExercise(weekIndex, dayIndex, exerciseId);
+    const loadWorkouts = async () => {
+      if (!userId || !programId || !programData) return;
 
-    try {
-      await syncWorkoutToDb(schedule[weekIndex][dayIndex], userId);
-    } catch (error) {
-      console.error('Failed to sync workout:', error);
-    }
-  };
+      try {
+        // Generate base schedule - use today's date instead of startDate
+        const baseSchedule = generateSchedule(new Date(), programData);
+        
+        // Fetch saved data
+        const result = await fetchWorkouts(userId, programId);
+        
+        if (!mounted) return;
+        
+        if (result.error) {
+          console.error('Failed to load workouts:', result.error);
+          setSchedule(baseSchedule);
+          return;
+        }
 
-  const handleNotesUpdate = async (weekIndex: number, dayIndex: number, notes: string) => {
-    if (!userId) return;
+        // Merge saved data with base schedule
+        if (result.data?.length) {
+          const workoutMap = new Map(
+            result.data.map(w => [
+              new Date(w.date).toISOString().split('T')[0],
+              {
+                id: w.id,
+                completed: w.completed_exercises?.reduce((acc, ex) => ({
+                  ...acc,
+                  [ex.exercise_id]: ex.completed
+                }), {}) || {},
+                userNotes: w.user_notes
+              }
+            ])
+          );
 
-    updateNotes(weekIndex, dayIndex, notes);
+          const mergedSchedule = baseSchedule.map(week =>
+            week.map(day => ({
+              ...day,
+              completed: workoutMap.get(day.date.toISOString().split('T')[0])?.completed || {},
+              userNotes: workoutMap.get(day.date.toISOString().split('T')[0])?.userNotes
+            }))
+          );
 
-    try {
-      await syncWorkoutToDb(schedule[weekIndex][dayIndex], userId);
-    } catch (error) {
-      console.error('Failed to sync workout notes:', error);
-    }
-  };
+          setSchedule(mergedSchedule);
+        } else {
+          setSchedule(baseSchedule);
+        }
+      } catch (error) {
+        console.error('Failed to load workouts:', error);
+        if (programData) {
+          setSchedule(generateSchedule(new Date(), programData));
+        }
+      } finally {
+        if (mounted) {
+          setIsInitializing(false);
+        }
+      }
+    };
 
-  const handleBatchComplete = async (
-    weekIndex: number,
-    dayIndex: number,
-    exerciseIds: string[],
-    completed: boolean
-  ) => {
-    if (!userId) return;
+    loadWorkouts();
+    return () => { mounted = false; };
+  }, [userId, programId, programData, fetchWorkouts, setSchedule]);
 
-    batchComplete(weekIndex, dayIndex, exerciseIds, completed);
+  if (!programData || isInitializing) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <LoadingSpinner size="w-8 h-8" />
+      </div>
+    );
+  }
 
-    try {
-      await syncWorkoutToDb(schedule[weekIndex][dayIndex], userId);
-    } catch (error) {
-      console.error('Failed to sync batch completion:', error);
-    }
-  };
-
-  const sharedProps = {
+  const viewProps = {
     schedule,
     expandedWorkoutId,
     onExpandWorkout: setExpandedWorkout,
-    onExerciseComplete: handleExerciseComplete,
-    onBatchComplete: handleBatchComplete,
-    onNotesChange: handleNotesUpdate,
+    onExerciseComplete: (weekIndex: number, dayIndex: number, exerciseId: string) =>
+      handleExerciseComplete(weekIndex, dayIndex, exerciseId, userId),
+    onBatchComplete: (weekIndex: number, dayIndex: number, exerciseIds: string[], completed: boolean) =>
+      handleBatchComplete(weekIndex, dayIndex, exerciseIds, completed, userId),
+    onNotesChange: (weekIndex: number, dayIndex: number, notes: string) =>
+      handleNotesUpdate(weekIndex, dayIndex, notes, userId),
+    userId
   };
 
   return (
@@ -83,28 +132,21 @@ export function WorkoutTracker({ userId, programId }: WorkoutTrackerProps) {
         title={programData.name}
         viewMode={viewMode}
         onViewModeChange={setViewMode}
+        startDate={new Date()} // Use current date for now
+        onStartDateChange={() => {}}
       />
 
-      {/* Status indicators */}
-      <div className="mb-6 space-y-4">
-        {isSyncing && (
-          <div className="text-sm text-gray-600">
-            Syncing changes...
-          </div>
-        )}
-        
-        {error && (
-          <Alert variant="destructive">
-            {error}
-          </Alert>
-        )}
-      </div>
+      {isSyncing && (
+        <div className="mb-6 text-sm text-gray-600 flex items-center gap-2">
+          <LoadingSpinner size="w-4 h-4" />
+          Syncing changes...
+        </div>
+      )}
 
-      {/* Workout view */}
       {viewMode === 'calendar' ? (
-        <WorkoutGrid {...sharedProps} />
+        <WorkoutGrid {...viewProps} />
       ) : (
-        <WorkoutList {...sharedProps} />
+        <WorkoutList {...viewProps} />
       )}
     </div>
   );

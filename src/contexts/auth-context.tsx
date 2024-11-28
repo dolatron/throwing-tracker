@@ -4,19 +4,21 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import { createContext, useContext, useEffect, useState } from 'react';
 import type { User } from '@supabase/supabase-js';
+import type { ApiResponse } from '@/types/api';
 
 interface AuthContextType {
   user: User | null;
-  signIn: (email: string) => Promise<void>;
-  signOut: () => Promise<void>;
+  signIn: (email: string) => Promise<ApiResponse<void>>;
+  signOut: () => Promise<ApiResponse<void>>;
+  updateUserProfile: (profile: { name: string }) => Promise<ApiResponse<void>>;
   isLoading: boolean;
 }
 
-// Export the context
 export const AuthContext = createContext<AuthContextType>({
   user: null,
-  signIn: async () => { throw new Error('Not implemented') },
-  signOut: async () => { throw new Error('Not implemented') },
+  signIn: async () => ({ error: 'Not implemented', status: 500 }),
+  signOut: async () => ({ error: 'Not implemented', status: 500 }),
+  updateUserProfile: async () => ({ error: 'Not implemented', status: 500 }),
   isLoading: true
 });
 
@@ -68,8 +70,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               }
 
               console.log('Successfully created database user:', newUser);
-            } else {
-              console.log('Found existing database user:', dbUser);
             }
 
             setUser(session.user);
@@ -96,20 +96,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
   }, [router, supabase]);
 
-  const signIn = async (email: string) => {
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
-
-    if (error) {
-      throw error;
+  const signIn = async (email: string): Promise<ApiResponse<void>> => {
+    try {
+      const result = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
+        },
+      });
+  
+      if (result.error) {
+        throw new Error(result.error.message);
+      }
+      
+      return { status: 200 };
+    } catch (error) {
+      console.error('Sign in error:', error);
+      return {
+        error: error instanceof Error ? error.message : 'Failed to sign in',
+        status: 500
+      };
     }
   };
 
-  const signOut = async () => {
+  const signOut = async (): Promise<ApiResponse<void>> => {
     try {
       // Call server-side logout endpoint
       const response = await fetch('/api/auth/logout', {
@@ -128,22 +138,54 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       
       // Redirect to onboard page
       router.push('/onboard');
+      return { status: 200 };
     } catch (error) {
       console.error('Error during sign out:', error);
       // Still try to redirect even if there was an error
       router.push('/onboard');
+      return {
+        error: error instanceof Error ? error.message : 'Failed to sign out',
+        status: 500
+      };
     }
   };
 
+  const updateUserProfile = async (profile: { name: string }): Promise<ApiResponse<void>> => {
+    try {
+      if (!user) {
+        throw new Error('No authenticated user');
+      }
+
+      const { error } = await supabase
+        .from('users')
+        .update({ 
+          name: profile.name,
+          updated_at: new Date().toISOString() 
+        })
+        .eq('id', user.id);
+
+      if (error) throw error;
+      
+      return { status: 200 };
+    } catch (error) {
+      console.error('Failed to update profile:', error);
+      return {
+        error: error instanceof Error ? error.message : 'Failed to update profile',
+        status: 500
+      };
+    }
+  };
+
+  const value = {
+    user,
+    signIn,
+    signOut,
+    updateUserProfile,
+    isLoading
+  };
+
   return (
-    <AuthContext.Provider 
-      value={{ 
-        user, 
-        signIn, 
-        signOut,
-        isLoading
-      }}
-    >
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );

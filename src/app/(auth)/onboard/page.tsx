@@ -21,24 +21,32 @@ export default function OnboardPage() {
           setIsLoading(false);
           return;
         }
-
+    
         console.log('Checking if user is already onboarded:', user.id);
-        const { data: userData, error } = await supabase
+        const result = await supabase
           .from('users')
           .select('name, user_programs(id)')
           .eq('id', user.id)
           .single();
-
-        console.log('Onboarding check result:', userData);
-
-        if (error) throw error;
-
-        if (userData?.name && userData?.user_programs?.length) {
+    
+        if (result.error) {
+          if (result.error.code === 'PGRST116') {
+            // Record not found
+            setIsLoading(false);
+            return;
+          }
+          throw result.error;
+        }
+    
+        console.log('Onboarding check result:', result.data);
+    
+        if (result.data?.name && result.data?.user_programs?.length) {
           console.log('User already onboarded, redirecting to dashboard');
           router.push('/dashboard');
         }
-      } catch (error) {
-        console.error('Error checking onboarding status:', error);
+      } catch (err) {
+        console.error('Error checking onboarding status:', err);
+        // Optionally handle error state
       } finally {
         setIsLoading(false);
       }

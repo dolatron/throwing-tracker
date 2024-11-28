@@ -26,14 +26,13 @@
 │       └── globals.css
 ├── contexts
 │   ├── auth-context.tsx
-│   └── program-context.tsx
+│   ├── program-context.tsx
+│   └── workout-context.tsx
 ├── hooks
 │   ├── useAuth.ts
 │   ├── useProgram.ts
 │   ├── useProgramDebug.ts
-│   ├── useWorkoutActions.ts
-│   ├── useWorkoutState.ts
-│   └── useWorkoutSync.ts
+│   └── useWorkout.ts
 ├── lib
 │   ├── database.ts
 │   ├── middleware.ts
@@ -42,8 +41,7 @@
 ├── programs
 │   └── driveline-catcher-velo
 │       ├── exercises.json
-│       ├── program.json
-│       └── program_backup.json
+│       └── program.json
 ├── source_tree.txt
 ├── types
 │   ├── api.ts
@@ -70,7 +68,7 @@
     │       │   ├── checkbox.tsx
     │       │   ├── confirm-modal.tsx
     │       │   ├── index.ts
-    │       │   └── label.ts
+    │       │   └── label.tsx
     │       ├── forms
     │       │   ├── form-button.tsx
     │       │   ├── form-card.tsx
@@ -94,6 +92,7 @@
         ├── components
         │   ├── index.ts
         │   ├── workout-base.tsx
+        │   ├── workout-card.tsx
         │   ├── workout-detail.tsx
         │   ├── workout-grid.tsx
         │   ├── workout-header.tsx
@@ -102,4 +101,4 @@
         ├── index.ts
         └── workout-tracker.tsx
 
-32 directories, 71 files
+32 directories, 70 files

@@ -1,25 +1,25 @@
+// hooks/useProgram.ts
 import { useContext } from 'react';
 import { ProgramContext } from '@/contexts/program-context';
 
-export const useProgram = () => {
+export function useProgram() {
   const context = useContext(ProgramContext);
   
   if (!context) {
     throw new Error('useProgram must be used within a ProgramProvider');
   }
 
-  const { state } = context;
-
-  if (!state.isInitialized) {
+  if (!context.state.isInitialized) {
     throw new Error('Program data is not yet initialized');
   }
 
-  if (state.error) {
-    throw state.error;
+  if (context.state.error) {
+    throw context.state.error;
   }
 
   return {
-    programData: state.programData,
-    exerciseData: state.exerciseData
+    programData: context.state.programData,
+    exerciseData: context.state.exerciseData,
+    isLoading: context.isLoading
   };
-};
+}
